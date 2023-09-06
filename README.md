@@ -35,6 +35,8 @@
 
 🔋 2023.09.06
 
+[📖2주차 수업 자료](https://gainful-appendix-a7a.notion.site/Type-550436e1eba6414bbc1d2e5fb5b19e6a)
+
 ## 📂원시 타입
 
 * 자바스크립트에서 주로 사용되는 원시 타입인 `string`, `number`, `boolean`은 타입스크립트에서 대응하는 타입이 있습니다.
