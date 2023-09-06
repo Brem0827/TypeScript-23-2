@@ -126,6 +126,8 @@
 ---
 # 1주차
 
+[📖1주차 수업 자료](https://gainful-appendix-a7a.notion.site/acee91b0b4bc4f3c904c33bb50024ab0?pvs=4)
+
 🔋 2023.08.30
 
 - 💻오리엔테이션
