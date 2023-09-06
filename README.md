@@ -6,7 +6,7 @@
 [![Star on GitHub](https://img.shields.io/github/stars/Brem0827/Tech-Stack.svg?style=social)](https://github.com/Brem0827/TypeScript-23-2/stargazers)
 [![Fork on GitHub](https://img.shields.io/github/forks/Brem0827/Tech-Stack.svg?style=social)](https://github.com/Brem0827/TypeScript-23-2/network/members)
 
-# 🏃TypeScript
+# 💎TypeScript
 📔 201930324 이현종
 
 <table align="center">
@@ -25,7 +25,7 @@
     </tr>
 </table>
 
-💕 주차
+💎 주차
 ---
 1. 💭[2주차](#2주차)➡️
 1. 💭[1주차](#1주차)➡️
@@ -35,7 +35,7 @@
 
 🔋 2023.09.06
 
-## 원시 타입
+## 📂원시 타입
 
 * 자바스크립트에서 주로 사용되는 원시 타입인 `string`, `number`, `boolean`은 타입스크립트에서 대응하는 타입이 있습니다.
 * `string`은 "Hello World"와 같은 문자열 값을 나타냅니다.
@@ -43,37 +43,37 @@
 * `boolean`은 `true`, `false`두 값에 사용됩니다.
 * 원시 타입의 이름을 지정할때 String, Number와 같이 대문자로 시작하면 안됩니다.
 
-## 원시 타입
+## 📂원시 타입
 - 불변성
 - 메모리 효율성
 - 비교 시 값 자체를 비교 (Call by value)
 
-## 래퍼 객체
+## 📂래퍼 객체
 - 가변성
 - 객체로서 추가 메서드 및 프로퍼티를 가질 수 없음
 - 비교 시 참조를 비교 (Call by reference)
 
-## 배열
+## 📂배열
 * 배열에 타입을 지정할 때는 그 배열을 구성하는 타입과 [] 표기를 사용합니다.
 
-## any
+## 📂any
 * TypeScript의 any타입은 변수가 어떤 타입이든 될 수 있음을 나타냅니다. 일종의 프리패스권 또는 타입체크를 회피 하는 용도로 사용되다 보니 타입스크립트에 익숙하지 않은 개발자가 개발하는 과정에서 무분별하게 많이 쓰이게 되는 타입중 하나입니다.
 * 이름 그대로 모든 것을 허용하는 타입입니다.
 * 자바스크립트 프로젝트를 타입스크립트로 마이그레이션하는 과정이 아닌 한, 기본적으로 사용하지 않는 것을 권장
 
-## any는 아래와 같은 상황에서 사용될 수 있습니다.
+## 📂any는 아래와 같은 상황에서 사용될 수 있습니다.
 * 해당 라인이 문제가 없을것이라는 것을 확신 할수 있을 때
 * 타입정보가 없거나 미흡한 외부 라이브러리 등을 사용할 때
 * 실행시점에 타입이 결정되어서 타입을 미리 정할 수 없을 때
 
-## noImplicitAny
+## 📂noImplicitAny
 * 기본적으로 타입스크립트에서 타입이 지정되어 있지 않은 변수들에 대해 `문맥상 타입을 추정할` 수 없다면 컴파일러에서는 `any`타입으로 가정합니다.
 
-## Type Annotations on Variables
+## 📂Type Annotations on Variables
 
 * 타입스크립트는 일반적인 언어에서 사용하는 int x = 0; 와 같은 “왼쪽에 타입을 정의하는” 스타일을 사용하지 않습니다. 타입 어노테이션은 항상 작성한 내용 다음에 오게 됩니다.
 
-## Functions
+## 📂Functions
 
 - Parameter Type Annotations
 
@@ -81,7 +81,7 @@
 
 * 매개변수에 타입 어노테이션이 지정되면 해당 함수를 호출 할 때 인자값을 체크하게 됩니다.
 
-## Template strings - 백틱(``) 사용 문자열
+## 📂Template strings - 백틱(``) 사용 문자열
 
 * 템플릿 스트링은 ES6에서 도입된 자바스크립트의 문자열 처리 방식중 하나입니다. 이 방식은 기존의 문자열을 다루기 위한 작은따옴표(‘’ ), 큰따옴표(“”) 대신 백틱(``) 이라는 문자를 사용하여 표현됩니다.
 
@@ -91,23 +91,23 @@
 
 2. 문자열 삽입: ${}를 사용하여 문자열 안에 변수나 식을 삽입할 수 있습니다.
 
-## Return Type Annotations
+## 📂Return Type Annotations
 
-## Functions Which Return Promises
+## 📂Functions Which Return Promises
 
 * Promises를 리턴하는 함수에 타입 어노테이션을 달고 싶다면 Promise 타입을 사용해야 합니다.
 
-## Promise?
+## 📂Promise?
 
 * Promise는 비동기 작업의 최종 완료 또는 실패를 나타내는 객체입니다. 주로 서버와의 비동기 통신, 파일 읽기 등에 사용됩니다.
 
 * 비동기 작업 - 일반적으로 Javascript는 코드를 실행할때 위에서부터 아래의 순서대로 실행되게 됩니다.
 
-## Anonymous Functions
+## 📂Anonymous Functions
 
 * 익명 함수(또는 arrow function)의 경우도 비슷한 방식으로 타입 어노테이션을 달 수 있습니다.  
 
-## 익명함수?
+## 📂익명함수?
 
 * 익명 함수(Anonymous Function)는 이름이 없는 함수를 의미합니다. 이러한 함수는 주로 함수의 인자로 전달되거나, 변수에 할당되어 사용됩니다. 
 
