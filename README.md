@@ -27,8 +27,352 @@
 
 💎 주차
 ---
-1. 💭[2주차](#2주차)➡️
 1. 💭[1주차](#1주차)➡️
+2. 💭[2주차](#2주차)➡️
+3. 💭[3주차](#3주차)➡️
+
+---
+# 3주차
+
+🔋 2023.09.13
+
+[📖3주차 수업 자료](https://gainful-appendix-a7a.notion.site/Object-Union-d9a258182b464231bf3db529290dc480?pvs=4)
+
+# 📂일반적인 유형 (Object, Union)
+
+## Object Types
+
+- 객체 타입을 타입스크립트에서 정의하는 법
+
+```tsx
+
+function printUserName(name: string){ 
+	console.log(name)
+}
+
+function printCoordinate(pt: {x: number, y: number}){
+	console.log(`x 좌표 ${pt.x}`);
+	console.log(`y 좌표 ${pt.y}`);
+}
+
+printCoordinate({ x: 3, y: 7 });
+
+```
+- 함수 파라미터에 두개의 속성이 있는 타입을 `number`로 정의했습니다.
+
+- 명시적으로 타입을 지정하지 않을 경우 `any` 타입으로 지정됩니다.
+
+- 이때, `noImplicitAny` 설정이 되어있다면 에러가 발생하고, `any` 타입으로 가정하여 에러가 발생하지않습니다.
+
+## Optional Properties
+
+- 객체 타입을 지정할 때 경우에 따라 일부 속성값은 들어갈 수도 있고, 들어가지 않을 수도 있는 선택사항일수도 있습니다.
+
+- 그럴 경우에는 해당 속성 값의 바로 뒤에 `?`를 넣어서 표현
+
+```tsx
+
+function printUser(obj: { name: string, age?: number }, ) {
+	if(!obj) console.log(`아무런 정보가 없습니다.`);
+	else{
+		console.log(`Name: ${obj.name}`);
+		if (obj.age) console.log(`Age: ${obj.age}`);
+	}
+}
+printUser();
+printUser({name: "홍길동"});
+printUser({name: "김길동", age: 21});
+
+```
+
+## 자바스크립트에서 ?를 사용한 문법
+
+### Optional Chaining : ?.
+
+- Optional Chaining은 객체의 속성이나 배열의 요소, 함수의 리턴값이 `null` 또는 `undefined`일 경우에 안전하게 접근할 수 있게 해주는 JavaScript 문법입니다.
+
+### Optional Chaining을 사용하지 않은 경우
+
+```tsx
+
+function printCity(obj: { name: string; address?: { city: string }}) {
+	console.log(`Name: ${obj.name}`);
+
+	if( obj.address & obj.address.city) {
+		console.log(`City: ${obj.address.city}`);
+	}
+}
+
+printCity({ name: "홍길동" });
+printCity({ name: "김길동", address: { city: "서울" } });
+
+```
+
+### Optional Chaining을 사용한 경우
+
+```tsx
+
+function printCityO(obj: { name: string; address?: { city: string }}) {
+	console.log(`Name: ${obj.name}`);
+	// address에 city값이 있을 경우 진행하고 없을 경우 "알수없음" 출력
+	console.log(`City: ${obj.address?.city || "알수없음"}`);
+}
+
+printCity({ name: "홍길동" });
+printCity({ name: "김길동", address: { city: "서울" } });
+
+```
+
+### Temary Operator : ? :
+
+- Temary Operator는 `조건 ? 참일때 리턴 : 거짓일때 리턴` 형식으로 if문을 대신하여 사용할 수 있는 연산자입니다.
+
+```tsx
+
+function printUser(obj: { name: string; age?: number }){
+	console.log(`Name: ${obj.age}`);
+	if(obj.age) {
+		console.log(`Age: ${obj.age}`);
+	}else{
+		console.log("Age: UnKnown");
+	}
+	// const result = obj.age ? obj.age : 'Unknown';
+	// console.log(result)
+}
+
+printCity({ name: "홍길동" });
+printCity({ name: "김길동", age: 21 });
+
+```
+
+### Temary Operator 사용 코드
+
+```tsx
+
+function printUser(obj: { name: string; age?: number }) {
+  console.log(`Name: ${obj.name}`);
+  console.log(`Age: ${obj.age ? obj.age : 'Unknown'}`);
+}
+
+printUser({ name: "홍길동" });  // Output: "Name: 홍길동", "Age: Unknown"
+printUser({ name: "김길동", age: 21 });  // Output: "Name: 김길동", "Age: 21"
+
+```
+
+# Union Types
+
+## Defining a Union Type
+
+- 타입을 결합하는 방법중 하나는 union type입니다. union type은 두개 이상의 다른 타입으로 구성된 타입으로 해당 타입중 하나가 될 수 있는 것을 의미합니다. 이러한 타입들을 유니온의 각 member라고 합니다.
+
+- string 또는 number가 될 수 있는 타입을 선언할 수 있습니다.
+
+```tsx
+
+function printId(id: number | string) {
+  console.log(`당신의 ID: ${id}`);
+}
+
+printId(101);
+printId("202");
+printId({ myID: 22342 });
+
+```
+
+## Working with Union Types
+
+```tsx
+
+function printId(id: number | string) {
+  console.log(`당신의 ID: ${id.toUpperCase()}`);
+}
+
+printId("202");
+
+```
+
+- 타입스크립트에서 `string | number` 로 유니온 타입을 사용 할 경우 해당 함수 내부에서는 두 타입 모두가 허용하는 속성과 메서드만 사용 할 수 있습니다.
+
+- 이런 상황에서의 해결책은 javascript 코드를 기반으로 타입스크립트가 해당 타입을 ‘추론’ 할 수 있도록 명시적으로 처리하는 것입니다.
+
+```tsx
+
+function printId(id: number | string) {
+  if (typeof id === "string") {
+    console.log(`당신의 ID: ${id.toUpperCase()}`);
+  } else {
+    console.log(id)
+  }
+}
+
+printId("202");
+
+```
+
+# javascript의 비교 연산자
+
+## && 연산자 (AND 연산자), || 연산자 (OR 연산자)
+
+- `&&` 연산자는 두 피연산자가 모두 true일 경우 true를 반환합니다. 첫 번째 피연산자가 false이면 두 번째 피연산자는 체크하지 않습니다. (short-circuit evaluation - 단축평가계산)
+
+- 좀 더 정확하게 표현하면 첫번째 피연산자가 `Falsy`이면 첫번째 피연산자 값을 리턴하고 모두 `Truthy` 면 마지막 피연산자 값을 리턴합니다.
+
+- `||` 연산자는 두 피연산자 중 하나라도 true일 경우 true를 반환합니다. 첫 번째 피연산자가 true이면 마찬가지로 두 번째 피연산자는 평가되지 않습니다.
+
+- 여기도 좀 더 정확하게 표현하면 첫번째 피연산자가 Truthy면 첫번째 피연산자를 리턴하고 둘 다 Falsy면 마지막 피연산자를 리턴합니다.
+
+```tsx
+
+let isAccountActive = true;
+let isEmailVerified = true;
+
+if (isAccountActive && isEmailVerified) {
+  console.log("로그인 성공!");
+} else {
+  console.log("로그인 실패!");
+}
+
+if (!isAccountActive || !isEmailVerified) {
+  console.log("로그인 실패!");
+} else {
+  console.log("로그인 성공!");
+}
+
+```
+
+```tsx
+
+let isConnected = false;
+function fetchData() {
+  console.log('데이터를 가져옵니다.');
+	return true
+}
+
+if (isConnected && fetchData()) {
+  console.log('데이터 조회 성공');
+}
+
+```
+
+```tsx
+
+let age = 25;
+let isAdult = (age >= 18) && "해당 사용자는 성인입니다.";
+
+console.log(isAdult);
+
+age = 15;
+let message = (age >= 18) || "해당 사용자는 성인이 아닙니다.";
+
+console.log(message);
+
+```
+
+## Truthy, Falsy
+
+- `JavaScript`에서 `"truthy"`와 `"falsy"`는 논리 연산자의 피연산자가 true 또는 false로 간주되는 경우를 설명하는 용어입니다. 이 차이를 이해하지 않고 각종 조건문을 사용하면 코드가 의도한대로 동작하지 않는 상황을 마주할 수 있습니다.
+
+- `Javascript`에서 아래의 조건절들은 모두 `truthy`로 취급됩니다.
+
+```tsx
+
+if (true)
+if ({})
+if ([])
+if (42)
+if ("0")
+if ("false")
+if (new Date())
+if (-42)
+if (12n)
+if (3.14)
+if (-3.14)
+if (Infinity)
+if (-Infinity)
+
+```
+
+- 정리하면 아래와 같은 값들이 `truthy` 입니다.
+
+1. ` **`true`**
+2. 모든 숫자 (0을 뺀)
+3. 모든 문자열 (**`''`, `“”`**을 제외)
+4. 모든 객체와 배열 (빈 객체와 빈 배열 포함)
+
+- `Javascript`의 이러한 특징 때문에 아래와 같은 코드는 문제를 발생 시킬 수 있습니다.
+
+```tsx
+
+const score = 0;
+
+if (score) {
+  console.log(`현재 스코어: ${score}`);
+} else {
+  console.log('서버로부터 스코어 값을 받아오지 못했습니다');
+}
+
+```
+
+- 위 코드의 경우 다양하게 해석 될 수 있지만 의도는 아래와 같다고 가정하겠습니다.
+
+1. `score` 값을 서버로부터 받아옴
+2. `score` 값 자체가 비어있을 수 있기에 `if (score)`를 통해 예외처리
+3. 현재 서버로부터 `score`의 값을 받아왔고 해당 값은 `0`
+
+- 따라서 위 코드의 결과는 `현재 스코어: 0` 이 출력되어야 합니다.
+
+```tsx
+
+function welcomePeople(x: string[] | string) {
+  if (Array.isArray(x) && x.length > 0) {
+    console.log(`${x[0]}님 외 ${x.length}명의 방문을 환영합니다.`);
+  } else {
+    console.log(`${x}님 환영합니다.`);
+  }
+}
+
+```
+
+- `Array.isArray` 메서드를 이용해 array타입인지 체크하고 각각의 케이스에 맞는 동작 코드를 수행하도록 처리되어 있습니다. 해당 코드에 따라 타입스크립트는 welcaomePeople에서 사용되는 유니온 타입들중 현재 x값이 array인지 string인지 체크 할 수 있습니다. 따라서 오류가 발생하지 않습니다.
+
+- 유니온 타입의 모든 맴버가 공통적으로 가지고 있는 메서드를 호출할 때 역시 별도의 오류 메세지를 발생시키지 않습니다. 대표적으로 slice 메서드는 string과 array 모두 가지고 있는 메서드입니다. 따라서 아래의 코드는 오류를 발생시키지 않습니다.
+
+```tsx
+
+function getFirstThree(x: number[] | string) {
+  return x.slice(0, 3);
+}
+
+console.log(getFirstThree("안녕하세요"));
+console.log(getFirstThree([1,2,3,4,5,6,7,8]));
+
+```
+
+## 🏠3주차 과제
+
+1. 
+
+2. 
+
+[📖3주차 과제 2](https://www.typescriptlang.org/play?#code/GYVwdgxgLglg9mABABwE4zFAQnAhqgEwApUBTAZxABsoAuRXMATwEpEBvAKEUQgXLhVSAOipwA5iQrUoLTgF9OnYKSgQAFkQDk6qFGTlaAeiPkouWBAC0fTKUzkr5UqgBuI8gGZhuZFbBwqFDqpLhmVgBMPgC2uABeCLgA7uTCfNFGZOTI-CIAVgJgWizCwfZEUpQ0LAC8AHxcPGRQIKhIWTLCBQhEcvIlZWBEVDBmiPUc3IgjZsLAgQCiuBoVBBa49Iys9Y08KOiYOPjEAAYAJOxr5sIASgByAKoAsgD6ACILAMoAwvKIVogLldcMJvgBBAAqCwA4gB5G4ATRedyefwBQPWwgA6jcAJJQ96QhZoxCABwnADFrgMumIAEvjPiTABUzgADewAwy4AfccAGENU4HCABiuIAMgsXt87hD5Cc5Dx+goShALCsXKhxnVJjxbAIhKIJERlX0WABuIA)
+
+```tsx
+
+function printBoard(result: any) {
+  console.log(result)
+}
+
+fetch('https://static-contents-serve.s3.ap-northeast-2.amazonaws.com/response.json').then((result)=>{
+  return result.json()
+}).then(list => {
+  list.forEach((data: any)=>{
+    printBoard(`${data.RNUM_DESC} - ${data.CATEGORY_NM} - ${data.WRITE_DATE} - 조회 ${data.HITS} - 첨부파일수 ${data.FILE_CNT}`)
+  })
+}).catch(err => {
+  console.log(err)
+});
+
+```
 
 ---
 # 2주차
