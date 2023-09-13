@@ -350,11 +350,57 @@ console.log(getFirstThree([1,2,3,4,5,6,7,8]));
 
 ## 🏠3주차 과제
 
-1. 
+1. 위 함수의 문제점을 찾아보세요. 위 함수가 문제가 발생하는 케이스를 작성하고 해결하기 위해서 어떻게 해야할지 코드를 수정해보세요.
+타입스크립트 플레이그라운드(https://www.typescriptlang.org/play) 에서 코드를 작성하고 주석을 이용해 수정한 내용과 설명을 작성해주세요.
+코드 링크 (Export -> Copy as Markdown Link)와 코드 화면을 캡쳐해서 첨부 후 제출하세요.
+
+```tsx
+
+function calculateAverage(scores: number[]) {
+  let total = 0;
+  let count = 0;
+  for (const score of scores) {
+    if (score) {
+      total += score;
+      count++;
+    }
+  }
+  return total / count;
+}
+
+```
+
+[📖3주차 과제 1](https://www.typescriptlang.org/play?#code/GYVwdgxgLglg9mABBAhgGwiNKoFMCCAbrgE4oDmuAFAM4Rwm40BciYIAtgEakDaAugEpEAbwBQiRGlxREUOFHSIAvIgAMAbglSZyOOFmrN24A0RV6YGrLoNciOMES3GNYeMmSA9F8QByNT9EQE41wAFxxAA5FAjATBrwv2B0GgBPP0AkGsAXccRAG+XAC1XADBbAFtHACPHAEXHEQF6awAaxwAXRwBSmxEAObsAcCcAAGsRAHB7AXYHAA1XADCHAEebEYsBWocAJpsATpoA6bW9fQBA1wBrxxEAVecAdlprAHEGGmCdaekZBQB9OxEAagcBKscANVcAb0fVygCJEtBT7wB0OxEAQGsAficvAA5rEQAs3YAdob+w3G01miB8iF25gAhDAaFEIvs7IJ3IhABkzgB-2xB9QCoE+UbpFooAPccAA5OIQAio4AZpspgFU10mXBrrd6AAZ6KohAC6rgB9RxCAS1XJjNPDC9gikdFUYcMZDJPJFGhEABqVQuXAaRCQgC+kPoBiVSo12h1IsYUBAJCQ8qUvj1YCgWh1YksNDg0imaDg5As6Ew2DwRFIFGovAAjGoADSIABMkcQAGY43GAKxxgBsaiEgg0QA)
+
+- 답안
+
+```tsx
+
+function calculateAverage(scores: number[]) {
+  let total = 0;
+  let count = 0;
+  for (const score of scores) {
+    // '0' 혹은 NaN같은 'falsy'값이 포함되어있을 경우에는 문제가 발생할수도 있습니다.
+    // 현재 코드에서는 if (score)를 사용하여 0을 "falsy"로 간주하고 무시하고 있습니다.
+    // if (!isNaN(score)) { 처럼 수정을 하여 NaN인지 아닌지 확인하는 코드로 변경 해야 합니다.
+    if (!isNaN(score)) { 
+      total += score; 
+    }
+    count++; 
+  }
+    return total / count;
+}
+
+console.log(calculateAverage([10, 20, 30, 0, 50, 60]));
+
+```
 
 2. 
 
 [📖3주차 과제 2](https://www.typescriptlang.org/play?#code/GYVwdgxgLglg9mABABwE4zFAQnAhqgEwApUBTAZxABsoAuRXMATwEpEBvAKEUQgXLhVSAOipwA5iQrUoLTgF9OnYKSgQAFkQDk6qFGTlaAeiPkouWBAC0fTKUzkr5UqgBuI8gGZhuZFbBwqFDqpLhmVgBMPgC2uABeCLgA7uTCfNFGZOTI-CIAVgJgWizCwfZEUpQ0LAC8AHxcPGRQIKhIWTLCBQhEcvIlZWBEVDBmiPUc3IgjZsLAgQCiuBoVBBa49Iys9Y08KOiYOPjEAAYAJOxr5sIASgByAKoAsgD6ACILAMoAwvKIVogLldcMJvgBBAAqCwA4gB5G4ATRedyefwBQPWwgA6jcAJJQ96QhZoxCABwnADFrgMumIAEvjPiTABUzgADewAwy4AfccAGENU4HCABiuIAMgsXt87hD5Cc5Dx+goShALCsXKhxnVJjxbAIhKIJERlX0WABuIA)
+
+
+- 답안
 
 ```tsx
 
