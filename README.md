@@ -378,17 +378,12 @@ function calculateAverage(scores: number[]) {
 
 function calculateAverage(scores: number[]) {
   let total = 0;
-  let count = 0;
+  const count = scores.length;
   for (const score of scores) {
-    // '0' 혹은 NaN같은 'falsy'값이 포함되어있을 경우에는 문제가 발생할수도 있습니다.
-    // 현재 코드에서는 if (score)를 사용하여 0을 "falsy"로 간주하고 무시하고 있습니다.
-    // if (!isNaN(score)) { 처럼 수정을 하여 NaN인지 아닌지 확인하는 코드로 변경 해야 합니다.
-    if (!isNaN(score)) { 
-      total += score; 
-    }
+    total += score; 
     count++; 
   }
-    return total / count;
+    return count === 0 ? '입력값X' : total / count;
 }
 
 console.log(calculateAverage([10, 20, 30, 0, 50, 60]));
@@ -397,22 +392,28 @@ console.log(calculateAverage([10, 20, 30, 0, 50, 60]));
 
 2. 
 
-[📖3주차 과제 2](https://www.typescriptlang.org/play?#code/GYVwdgxgLglg9mABABwE4zFAQnAhqgEwApUBTAZxABsoAuRXMATwEpEBvAKEUQgXLhVSAOipwA5iQrUoLTgF9OnYKSgQAFkQDk6qFGTlaAeiPkouWBAC0fTKUzkr5UqgBuI8gGZhuZFbBwqFDqpLhmVgBMPgC2uABeCLgA7uTCfNFGZOTI-CIAVgJgWizCwfZEUpQ0LAC8AHxcPGRQIKhIWTLCBQhEcvIlZWBEVDBmiPUc3IgjZsLAgQCiuBoVBBa49Iys9Y08KOiYOPjEAAYAJOxr5sIASgByAKoAsgD6ACILAMoAwvKIVogLldcMJvgBBAAqCwA4gB5G4ATRedyefwBQPWwgA6jcAJJQ96QhZoxCABwnADFrgMumIAEvjPiTABUzgADewAwy4AfccAGENU4HCABiuIAMgsXt87hD5Cc5Dx+goShALCsXKhxnVJjxbAIhKIJERlX0WABuIA)
+[📖3주차 과제 2](https://www.typescriptlang.org/ko/play?#code/MYGwhgzhAEBCD2YBOATASgUwgVxAF2gG8AoaaYeAOwjyW2D3iQApSzoAHbAIxAEtg0NADkAqgFkA+gBEAogGUAwgC5oNJH0oBzADRsyXXgOiKAggBVZAcQDyaAJqTh41es279nHv0EB1NACSljIWsq607nrsXkaCABJB8qqU2AC23BhIUeyGPtAAYgEAMrKSisLmyWkZSGwAlEQAvsTNxABm2JQMfFScGpR4CMgozEhYuHiqQ6iYOPgNJGQU1PAgGAB0IPBazAAGACSEY3N46yISMgqKjdAAtNCHxxPrZpa2Dk7iN-eP4-jr-iCpWkoW+0EADhOAGLWHkc-qcEuZ5GDABUzgADewAwy4AfccAGEMwp7-QolMoVRq7OotYjtDB4YAAC2YAHJaXg8BwIMoAPQcmhgPACW7LPAYAYQW4QTIANw2EAAzOswBxbpQmHhaRhIHhbgAmeWpMAALyoYAA7hB1hRUhzjhwqOL1gArCBUBl1daq4XMUZwuoAXgAfItoGM8NgkJQg3CHU7KMxyY1Xe6Y-waNB-UQ2MnTm0mLIwHTPSheWBVGBKABPX0BzwcfqDRCoZiFvBgclkeMtV3AXn5zJIVN+9NLW2rDZbHa9uN1ADcQA)
 
 
 - 답안
 
 ```tsx
 
-function printBoard(result: any) {
-  console.log(result)
+function printBoard(result: {
+  RNUM_DESC: string;
+  CATEGORY_NM: string;
+  WRITE_DATE: string;
+  HITS: number;
+  FILE_CNT: number;
+}) {
+  console.log(`${result.RNUM_DESC} - ${result.CATEGORY_NM} - ${result.WRITE_DATE} - 조회 ${result.HITS} - 첨부파일수 ${result.FILE_CNT}`)
 }
 
 fetch('https://static-contents-serve.s3.ap-northeast-2.amazonaws.com/response.json').then((result)=>{
   return result.json()
 }).then(list => {
   list.forEach((data: any)=>{
-    printBoard(`${data.RNUM_DESC} - ${data.CATEGORY_NM} - ${data.WRITE_DATE} - 조회 ${data.HITS} - 첨부파일수 ${data.FILE_CNT}`)
+    printBoard(data)
   })
 }).catch(err => {
   console.log(err)
