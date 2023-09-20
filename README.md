@@ -30,6 +30,132 @@
 1. 💭[1주차](#1주차)➡️
 2. 💭[2주차](#2주차)➡️
 3. 💭[3주차](#3주차)➡️
+3. 💭[4주차](#4주차)➡️
+
+---
+# 4주차
+
+🔋 2023.09.20
+
+[📖4주차 수업 자료](https://gainful-appendix-a7a.notion.site/Type-Alias-Interface-37dba0ea83bb4b40aa24833bcd7bb495)
+
+# 📂Type Alias
+
+- 지금까지 우리는 `type annotation`을 통해 타입을 정의해왔습니다. 
+
+- 이 방법은 편리하지만 `동일한 타입`을 `두번 이상` 사용하는 경우 중복되는 코드가 많아지는 단점이 있습니다. 
+
+- 이제 사용해볼 `type alias`는 타입에 대한 이름을 지정하여 재 사용 가능하도록 하는 구문입니다.
+
+```js
+
+type Point = {
+  x: number;
+  y: number;
+};
+
+function printCoord(pt: Point) {
+  console.log("The coordinate's x value is " + pt.x);
+  console.log("The coordinate's y value is " + pt.y);
+}
+
+printCoord({ x: 100, y: 100 });
+
+```
+
+- `객체 타입`은 위와 같이 type을 선언하여 사용 할 수 있습니다. 
+
+- `printCoord`의 파라미터 값에 타입 어노테이션을 이용해 pt에 대한 타입을 지정했던 방식과는 달리 상단에 type alias를 선언해서 pt에 지정해주는 방식을 사용함으로 써 Point라는 타입을 재사용 할 수 있도록 처리했습니다.
+
+- 유니온 타입의 경우도 아래와 같이 사용 가능합니다.
+
+```js
+
+type ID = number | string;
+
+```
+
+# 📂Interfaces
+
+- 인터페이스는 type의 이름을 지정하는 또 다른 방법입니다.
+
+# 4주차 과제 1
+
+[📖4주차 과제 1](https://www.typescriptlang.org/ko/play?&classId=2f34722d-e01a-41f3-aa35-6232eed0ed81&assignmentId=64e5512f-9a65-4f5e-8d3f-3f264fec083e&submissionId=1af5914e-54a3-8b14-c0db-3924dffab99d#code/MYewdgzgLgBAJgQygmBeGBtA3gKBvmAIgEs5CAuIgBwEZCAaPAwsBAWwFMKjAagcB+ahk3yEqAJ2LAulGgFYADHMYEi0EMADW3GoqFFgSDgHMQogJ7dCgXaHAESuDlhOMQigArmCgXtAUkJMAvkowuPakFlQATHbMrJwWgB6NgB1LgIG9UcJiElIwsgo5gcKqGtwyeXoGxmYWgCATgAnjgDgTtiWEEFQcwBbEAOz0WQBsAOIAQjAASgCCALK++AFMwcyhlCIAzKlEMZmEgA9LgCqDgARzqyLiktzhOTr2BZqUp436UEYm5ouAGuOAGp0HEMQAXhuT-oFzYQLagAFgO6wslkArn0HdLHa7yc7MS7cJZI4R3B4VRY2A6OZwgNweSiI-6zXQkMiLKgycHsDaAFnXAADNgAfl2FHTLaM7olRQNRXLI8wiY8pPIg1ep4pyudwWGQ+fwAXRwOAAZm5gFBiOAYOl3AAFUQgOAuTUASTAqpAAAoxMbTVBKHNSJRoOIwIYANxMdauqDur1MOEcShgFxsABGHFE3vwl1D4ajMaYIsefoDsfg0sJ7gA-OniB6YAAfGBhyPRzPNVr5mBuwuBuPfDi1+se71+ACUQRV+FAkFgWBgpG6626we6l26qbM3XxMqgk5awEnzZgfjQuqNJs13qYABsOLB5zn7nBDRk9-hiKqYNaoKYWiBbyeiWhUOgAORtwyf7uAmB+2gLMCSJfVo0kdwEEMDhNyoBBRAgDgLSga1X3cbptE7TN8HQs8L0kOCORgABaO9gxgAAqECF3A0RIOQGCYAAekFORsP8GAOH3JDh1ve9Hw4Z8aNPd8v3LJM-x7ZQ8I4c9iPQCiyLwzMN243iANk+SMiIy9-F7QDwGAgAVEBkH3AjYMUjkADo+QAGTUBBDwAZX9BtrQ4vsjNgUzzIAEWzIk5MszctMsuyQEc-RXPcj1PKvGBD1gUQOAgFx91gdAAAMzX8ygABIsFIAIYEAF3HABDOwqsHWUrAAAawBKmuqvznMsvxAAWx7pAANVwAPcbq5qzOcwLQPcEKOQ67pABrxwADmuqy5SsAFznABlF6bABrO6qZ1MPxssSm872rYAYAAQg-GA3DgDhVULOT-10VL0symAAGocu6QASocATOW5uXbbVIMvbrU+H5jtO87LuuuBbuUe6MtgF6YGy7oeDKwAIybm5tfv0vwgA)
+
+```js
+
+const data = [{
+    "id": "p1",
+    "name": "사과",
+    "price": 1500,
+    "stock": 10,
+    "category": "식품",
+    "discount": "10%"
+  },
+  {
+    "id": "p2",
+    "name": "노트북",
+    "price": 1500000,
+    "stock": 5,
+    "category": "전자제품",
+    "spec": "i7, 16GB RAM"
+  },
+  {
+    "id": "p3",
+    "name": "티셔츠",
+    "price": 20000,
+    "stock": 20,
+    "category": "의류",
+    "size": "M"
+  },
+  {
+    "id": "p4",
+    "name": "식빵",
+    "price": 2500,
+    "stock": 30,
+    "category": "식품",
+    "discount": 500
+  },
+  {
+    "id": "p5",
+    "name": "휴대폰",
+    "price": 1000000,
+    "stock": 10,
+    "category": "전자제품",
+    "discount": "5%"
+  }]
+
+function discountString(
+  price: number,
+  discount: string | number
+): string{
+
+  return (typeof discount === 'number') ?
+    `할인가: ${(price - discount).toLocaleString()}원`
+    :
+    `할인가: ${(price * (1 - parseInt(discount) / 100)).toLocaleString()}원`
+    }
+
+data.forEach((product: {
+  id: string,
+  name: string,
+  price: number,
+  stock: number,
+  category:string,
+  spec?: string,
+  size?: string,
+  discount: string | number
+}) => {
+
+  const { id, name, price, stock, category, discount } = product;
+
+  let result: string = `ID: ${id}, 이름: ${name}, 가격: ${price}원`;
+
+  console.log(result);
+});
+
+```
 
 ---
 # 3주차
@@ -406,7 +532,10 @@ function printBoard(result: {
   HITS: number;
   FILE_CNT: number;
 }) {
-  console.log(`${result.RNUM_DESC} - ${result.CATEGORY_NM} - ${result.WRITE_DATE} - 조회 ${result.HITS} - 첨부파일수 ${result.FILE_CNT}`)
+
+  const { RNUM_DESC, CATEGORY_NM, WRITE_DATE, HITS, FILE_CNT } = result;
+
+  console.log(`${RNUM_DESC} - ${CATEGORY_NM} - ${WRITE_DATE} - 조회 ${HITS} - 첨부파일수 ${FILE_CNT}`)
 }
 
 fetch('https://static-contents-serve.s3.ap-northeast-2.amazonaws.com/response.json').then((result)=>{
