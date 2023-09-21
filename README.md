@@ -81,7 +81,7 @@ type ID = number | string;
 
 # 4주차 과제 1
 
-[📖4주차 과제 1](https://www.typescriptlang.org/ko/play?&classId=2f34722d-e01a-41f3-aa35-6232eed0ed81&assignmentId=64e5512f-9a65-4f5e-8d3f-3f264fec083e&submissionId=1af5914e-54a3-8b14-c0db-3924dffab99d#code/MYewdgzgLgBAJgQygmBeGBtA3gKBvmAIgEs5CAuIgBwEZCAaPAwsBAWwFMKjAagcB+ahk3yEqAJ2LAulGgFYADHMYEi0EMADW3GoqFFgSDgHMQogJ7dCgXaHAESuDlhOMQigArmCgXtAUkJMAvkowuPakFlQATHbMrJwWgB6NgB1LgIG9UcJiElIwsgo5gcKqGtwyeXoGxmYWgCATgAnjgDgTtiWEEFQcwBbEAOz0WQBsAOIAQjAASgCCALK++AFMwcyhlCIAzKlEMZmEgA9LgCqDgARzqyLiktzhOTr2BZqUp436UEYm5ouAGuOAGp0HEMQAXhuT-oFzYQLagAFgO6wslkArn0HdLHa7yc7MS7cJZI4R3B4VRY2A6OZwgNweSiI-6zXQkMiLKgycHsDaAFnXAADNgAfl2FHTLaM7olRQNRXLI8wiY8pPIg1ep4pyudwWGQ+fwAXRwOAAZm5gFBiOAYOl3AAFUQgOAuTUASTAqpAAAoxMbTVBKHNSJRoOIwIYANxMdauqDur1MOEcShgFxsABGHFE3vwl1D4ajMaYIsefoDsfg0sJ7gA-OniB6YAAfGBhyPRzPNVr5mBuwuBuPfDi1+se71+ACUQRV+FAkFgWBgpG6626we6l26qbM3XxMqgk5awEnzZgfjQuqNJs13qYABsOLB5zn7nBDRk9-hiKqYNaoKYWiBbyeiWhUOgAORtwyf7uAmB+2gLMCSJfVo0kdwEEMDhNyoBBRAgDgLSga1X3cbptE7TN8HQs8L0kOCORgABaO9gxgAAqECF3A0RIOQGCYAAekFORsP8GAOH3JDh1ve9Hw4Z8aNPd8v3LJM-x7ZQ8I4c9iPQCiyLwzMN243iANk+SMiIy9-F7QDwGAgAVEBkH3AjYMUjkADo+QAGTUBBDwAZX9BtrQ4vsjNgUzzIAEWzIk5MszctMsuyQEc-RXPcj1PKvGBD1gUQOAgFx91gdAAAMzX8ygABIsFIAIYEAF3HABDOwqsHWUrAAAawBKmuqvznMsvxAAWx7pAANVwAPcbq5qzOcwLQPcEKOQ67pABrxwADmuqy5SsAFznABlF6bABrO6qZ1MPxssSm872rYAYAAQg-GA3DgDhVULOT-10VL0symAAGocu6QASocATOW5uXbbVIMvbrU+H5jtO87LuuuBbuUe6MtgF6YGy7oeDKwAIybm5tfv0vwgA)
+[📖4주차 과제 1](https://www.typescriptlang.org/ko/play?&classId=2f34722d-e01a-41f3-aa35-6232eed0ed81&assignmentId=64e5512f-9a65-4f5e-8d3f-3f264fec083e&submissionId=1af5914e-54a3-8b14-c0db-3924dffab99d#code/MYewdgzgLgBAJgQygmBeGBtA3gKBvmAIgEs5CAuIgBwEZCAaPAwsBAWwFMKjAagcB+ahk3yEqAJ2LAulGgFYADHMYEi0EMADW3GoqFFgSDgHMQogJ7dCgXaHAESuDlhOMQigArmCgXtAUkJMAvkowuPakFlQATHbMrJwWgB6NgB1LgIG9UcJiElIwsgo5gcKqGtwyeXoGxmYWgCATgAnjgDgTtiWEEFQcwBbEAOz0WQBsAOIAQjAASgCCALK++AFMwcyhlCIAzKlEMZmEgA9LgCqDgARzqyLiktzhOTr2BZqUp436UEYm5ouAGuOAGp0HEMQAXhuT-oFzYQLagAFgO6wslkArn0HdLHa7yc7MS7cJZI4R3B4VRY2A6OZwgNweSiI-6zXQkMiLKgycHsDaAFnXAADNgAfl2FHTLaM7olRQNRXLI8wiY8pPIg1ep4pyudwWGQ+fwAXRwOAAZm5gFBiOAYOl3AAFUQgOAuTUASTAqpAAAoxMbTVBKHNSJRoOIwIYANxMdauqDur1MOEcShgFxsABGHFE3vwl1D4ajMaYIsefoDsfg0sJ7gA-OniB6YAAfGBhyPRzPNVr5mBuwuBuPfDi1+se71+ACUQRT4GgQRgpG6626we6l26qbM3XxMqg45awHHzZgfjQuqNJs13qYABsOLBZzn7nBDRkd-hiKqYNaoKYWiBr0eiWhUOgAORtwzv7uAmCgSBD2zIl9WjSR3AQQwOHXKgEFECAOAtKBrWfdxum0TtM3wVCTzPSQYI5GAAFob2DGAACoswJECwI4CCoJgAB6QU5Ew-wYA4XcEMHa9b3vDhHyoudXw-cskx-HtlBwjhT0I9AyJInDMzXTjuL-aTZIyAjz38FV8AA-sABUQGQXc8Og+SOQAOj5AAZNQEH3ABlf0G2tNj9L7WBjNMgARYD3Bk8z1w08ybJAez9Gc1yPXci8YH3WBRA4CAXF3WB0AAAzNXzKAAEiwUgAhgQAXccAEM78qwdZisAABrAEqayqfMc8y-EABbHukAA1XAA9xmrGpMxz-OowLNMkNrukAGvHAAOayrLmKwAXOcAGUXJsAGs7KqnUw-Ey+KrxvatgBgABCN8YDcOAOFVQsZN-XRktS9KYAAaiy7pABKhwBM5ZmxdNuUvSeN2lcjvQU7zsuuBruUW60tgJ6YEy7oeBKwAIyZm5tvt0phkqgFxRDAGBIfSjsVStUQbwM2A7S3WBBMQZBwf-LyN3tc1LRAbSDU3B0LStW0Oc1Dz6cgEB9ys3cQEMHmmagLmQDYvwgA)
 
 ```js
 
@@ -126,34 +126,49 @@ const data = [{
     "discount": "5%"
   }]
 
-function discountString(
-  price: number,
-  discount: string | number
-): string{
+function printProductInfo(product: {
+  id: string;
+  name: string;
+  price: number;
+  stock: number;
+  category: string;
+  discount?: string | number;
+  spec?: string;
+  size?: string;
+}) {
+  const { id, name, price, stock, category, discount, spec, size } = product;
 
-  return (typeof discount === 'number') ?
-    `할인가: ${(price - discount).toLocaleString()}원`
-    :
-    `할인가: ${(price * (1 - parseInt(discount) / 100)).toLocaleString()}원`
-    }
+  let discountedPrice;
 
-data.forEach((product: {
-  id: string,
-  name: string,
-  price: number,
-  stock: number,
-  category:string,
-  spec?: string,
-  size?: string,
-  discount: string | number
-}) => {
+  if (typeof discount === 'string') {
+    const discountPercentage = parseInt(discount, 10);
+    discountedPrice = price - (price * discountPercentage / 100);
+  } else if (typeof discount === 'number') {
+    discountedPrice = price - discount;
+  } else {
+    discountedPrice = price;
+  }
 
-  const { id, name, price, stock, category, discount } = product;
+  const TotalPrice = price.toLocaleString();
+  const TotalDiscountedPrice = discountedPrice.toLocaleString();
 
-  let result: string = `ID: ${id}, 이름: ${name}, 가격: ${price}원`;
+  let result = `ID: ${id}, 이름: ${name}, 가격: ${TotalPrice}원, 할인가: ${TotalDiscountedPrice}원, 재고: ${stock}, 카테고리: ${category}`;
 
-  console.log(result);
-});
+  if (spec !== undefined) {
+    result += `, 스펙: ${spec}`;
+  }
+
+  if (size !== undefined) {
+    result += `, 사이즈: ${size}`;
+  }
+
+  return result;
+}
+
+for (const product of data) {
+  const productInfo = printProductInfo(product);
+  console.log(productInfo);
+}
 
 ```
 
