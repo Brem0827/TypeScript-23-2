@@ -30,7 +30,278 @@
 1. 💭[1주차](#1주차)➡️
 2. 💭[2주차](#2주차)➡️
 3. 💭[3주차](#3주차)➡️
-3. 💭[4주차](#4주차)➡️
+4. 💭[4주차](#4주차)➡️
+5. 💭[5주차](#5주차)➡️
+6. 🔖[중간고사](#중간고사)➡️
+
+---
+# 중간고사
+
+[📖1주차 수업 자료](https://gainful-appendix-a7a.notion.site/acee91b0b4bc4f3c904c33bb50024ab0?pvs=4)
+
+[📖2주차 수업 자료](https://gainful-appendix-a7a.notion.site/Type-550436e1eba6414bbc1d2e5fb5b19e6a)
+
+[📖3주차 수업 자료](https://gainful-appendix-a7a.notion.site/Object-Union-d9a258182b464231bf3db529290dc480?pvs=4)
+
+[📖4주차 수업 자료](https://gainful-appendix-a7a.notion.site/Type-Alias-Interface-37dba0ea83bb4b40aa24833bcd7bb495)
+
+---
+# 5주차
+
+🔋 2023.09.27
+
+[📖5주차 수업 자료](https://gainful-appendix-a7a.notion.site/Type-Alias-Interface-37dba0ea83bb4b40aa24833bcd7bb495)
+
+# 📂Type Alias
+
+- `type alias`는 타입에 대한 이름을 지정하여 재 사용 가능하도록 하는 구문입니다.
+
+```js
+
+type Point = {
+  x: number;
+  y: number;
+};
+
+function printCoord(pt: Point) {
+  console.log("The coordinate's x value is " + pt.x);
+  console.log("The coordinate's y value is " + pt.y);
+}
+
+printCoord({ x: 100, y: 100 });
+
+```
+
+- `객체 타입`은 위와 같이 type을 선언하여 사용 할 수 있습니다. 
+
+- `printCoord`의 파라미터 값에 타입 어노테이션을 이용해 pt에 대한 타입을 지정했던 방식과는 달리 상단에 type alias를 선언해서 pt에 지정해주는 방식을 사용함으로 써 Point라는 타입을 재사용 할 수 있도록 처리했습니다.
+
+- 유니온 타입의 경우도 아래와 같이 사용 가능합니다.
+
+```js
+
+type ID = number | string;
+
+```
+
+# 📂Interfaces
+
+- 인터페이스는 type의 이름을 지정하는 또 다른 방법입니다.
+
+```js
+
+interface Point {
+  x: number;
+  y: number;
+}
+
+function printCoord(pt: Point) {
+  console.log("The coordinate's x value is " + pt.x);
+  console.log("The coordinate's y value is " + pt.y);
+}
+
+printCoord({ x: 100, y: 100 });
+
+```
+
+# 📂Type Aliases 와 Interfaces의 차이점
+
+```js
+
+// 1. 병합
+interface User {
+  name: string;
+}
+interface User {
+  age: number;
+}
+const userInfo: User = { name: "철수", age: 22 }; // No error
+
+
+type UserType = { // Error: Duplicate identifier 'UserType'.
+   name: string;
+};
+type UserType = { // Error: Duplicate identifier 'UserType'.
+   age: number;
+};
+
+
+// 2. 확장
+interface Animal {
+  sound: string;
+}
+interface Dog extends Animal {
+  breed: string;
+}
+class MyDog implements Dog {
+  sound = "멍멍";
+  breed = "진돗개";
+}
+const dog: Dog = {
+  sound: "왈왈",
+  breed: "치와와"
+}
+
+
+type AnimalType = {
+  sound: string;
+};
+type DogType = AnimalType & {
+  breed: string;
+};
+
+// 3. Union, Intersection (확장)
+
+// interface Button = PrimaryButton | SecondaryButton;  // Error
+
+type PrimaryButton = { label: string, primary: true };
+type SecondaryButton = { label: string, primary: false };
+
+type ButtonType = PrimaryButton | SecondaryButton;
+
+// 4. 처리 가능한 속성
+// interface ComputedProps {  // Error
+//   [key: `prop_${string}`]: string;
+// }
+
+type ComputedPropsType = {
+  [key: `sound_${count}`]: string;
+};
+
+```
+
+```js
+
+interface User {
+  id: string;
+  name: string;
+}
+
+type ID = string | number;
+type AnimalOrID = Animal | ID;
+
+```
+
+# 📂Literal Types
+
+- typescript에서는 `string`이나 `number`와 같은 타입 뿐만 아니라 값 자체를 의미하는 `리터럴 타입`도 정의할 수 있습니다. 이러한 `리터럴 타입`을 `정의`하는 방법과 함께 `타입스크립트`가 `javascript`에서 변수를 선언하는 방식에 따른 동작을 이해할 필요가 있습니다.
+
+```js
+
+let changingString = "Hello World";
+changingString = "안녕하세요.";
+// 위에서 changingString은 가능한 모든 스트링을 나타낼 수 있기 때문에
+// 타입스크립트에서는 아래와 같이 인식합니다.
+changingString; // let changingString: string
+
+const constString = "Hello World";
+// constString은 오로지 "Hello World"라는 문자열만을 의미합니다.
+// 타입스크립트에서는 아래와 같이 인식합니다.
+constString;   //  const constString: "Hello World"
+
+```
+
+```js
+
+let x: "hello" = "hello";
+x = "hello"; // 정상동작
+x = "howdy"; // 에러
+Type '"howdy"' is not assignable to type '"hello"'.Type '"howdy"' is not assignable to type '"hello"'.
+
+```
+
+```js
+
+function printText(s: string, alignment: "left" | "right" | "center") {
+  // ...
+}
+printText("안녕하세요.", "left");
+
+printText("반갑습니다.", "centre");
+Argument of type '"centre"' is not assignable to parameter of type '"left" | "right" | "center"'.Argument of type '"centre"' is not assignable to parameter of type '"left" | "right" | "center"'.
+
+```
+
+```js
+
+function compare(a: string, b: string): -1 | 0 | 1 {
+  return a === b ? 0 : a > b ? 1 : -1;
+}
+
+```
+
+```js
+
+interface Options {
+  width: number;
+}
+function configure(x: Options | "auto") {
+  // ...
+}
+configure({ width: 100 });
+
+configure("auto");
+
+configure("automatic");
+Argument of type '"automatic"' is not assignable to parameter of type 'Options | "auto"'.Argument of type '"automatic"' is not assignable to parameter of type 'Options | "auto"'.
+
+```
+
+# 📂Literal Inference
+
+```js
+
+const obj = { counter: 0 };
+obj.counter = 1;
+
+```
+
+- `TypeScript`는 이전에 0이었던 필드에 1을 할당하는 것을 오류라고 가정하지 않습니다. (const임에도 불구하고) 다르게 말하면, obj.counter에는 0이 아닌 타입인 number로 추론합니다. 
+
+```js
+
+declare function handleRequest(url: string, method: "GET" | "POST"): void;
+
+const req = { url: "https://example.com", method: "GET" };
+handleRequest(req.url, req.method);
+
+Argument of type 'string' is not assignable to parameter of type '"GET" | "POST"'.Argument of type 'string' is not assignable to parameter of type '"GET" | "POST"'.Try
+
+```
+
+- 위의 예제에서 req.method는 "GET"이 아닌 string으로 추론됩니다. req를 생성하고 handleRequest를 호출하는 사이에 “안녕하세요"와 같은 다른 문자열을 req.method에 할당할 수 있기 때문에 TypeScript는 이 코드에 오류가 있는 것으로 간주합니다.
+
+- 이 문제를 해결하기 위해 두가지 방법을 사용 할 수 있습니다.
+
+1. 둘중 하나의 위치에 as를 통해 명시적으로 타입을 지정하는 방법이 있습니다.
+
+```js
+
+// Change 1:
+const req = { url: "https://example.com", method: "GET" as "GET" };
+// Change 2
+handleRequest(req.url, req.method as "GET");
+
+```
+
+- `Change 1`은 "req.method가 항상 `리터럴 타입` "GET"을 갖도록 하여 이후 해당 필드에 "안녕하세요"와 같은 다른 문자열을 할당할 수 없도록 하겠습니다."를 의미합니다. 
+
+- `Change 2`는 "req.method가 "GET" 값을 갖습니다."를 의미합니다.
+
+2. `as const` 를 이용하여 `req 객체` 자체를 `type literals`로 고정합니다.
+
+```js
+
+const req = { url: "https://example.com", method: "GET" } as const;
+handleRequest(req.url, req.method);
+
+```
+
+[📖5주차 과제 1](https://www.typescriptlang.org/ko/play?&classId=2f34722d-e01a-41f3-aa35-6232eed0ed81&assignmentId=030c664f-4393-4107-be90-e96652a1073b&submissionId=5b7fdcd8-c88a-162d-993f-385aa5ff4dd7#code/C4TwDgpgBAqgzhATgSQHYDMD2UC8UDeAsAFBRlSoCGAthAFxzCICWqA5gDRSVv0UCu1AEZIuEapWYAbOlEYt2XSgBNliCHDiz5rNiQC+JEq2BJ0lAMbR4SNFgBMBEuQo16O9gG5n5Hn1SCIojepOTikjJyTLohLipqGlpRCmwhhsQk6PyoFsDMmKhQFuqUpjaIABRUtNrRity8sgHColDh0rUpSqrqmp26AJREoWTqwPyIqMMuLtUQHD4zDfOLM+1SCyMz8b1wq-ppJAD0RwAq4NAAglLMlHvEWTl5BVBgCsDldpgVMMiynxhMAMnFsLAU4JgpBAAHRSTBsCoAA0ALuOAEM7ZAASfC-aFzfRcQAZDcjMdjkNC-PioMjACpdgB9xkk49aUwA-E4AYwYZZJ2iX0iIGhwyxDeJgBWAq+FcNSgACJALJrgA46wCbzVKlI0oPYAKxiCQdaUACwKbAAAhAAB40MBQ6Fg6jK7g9RKyKWAHEHAB1jUqg+j5RmIJxMZksEEy2Vy+UKQtQHwQKEB9h+yHs-yjX3swOm5DBqAhlrhCJR6KgWN+9lxbkpRI5xYpXBp9ILpOLTK4bIr5Ptmh5XuI6RI4cjthjYolfFlittflkGq1EUd+vYxrN1AtMOtY7bSWdbo9nZIQA)
+
+[📖5주차 과제 2](https://www.typescriptlang.org/ko/play?#code/C4TwDgpgBAqgzhATgSQHYDMD2UC8UDeAsAFBRlSoCGAthAFxzCICWqA5gDRSVv0UCu1AEZIuEapWYAbOlEYt2XSgBNliCHDiz5rNiQC+JEq2BJ0lAMbR4SNFgBMBEuQo16O9gG5n5Hn1SCIojepOTikjJyTLohLipqGlpRCmwhhsTGqKaI5lawCCgYmADMUBAAHqaoynD5tkWORKFkiJhSfB6pBkbE6PyoFsDMmKhQFuqUpjaIABRUtNrRity8sgHComUS0ospSqrqmru6AJRNLurA-Iio5y7k8xAcPvcrTy-34dLPzffxh3APvo0iQAPSggAq4GgAEEpMxKIDev1BsNRmAFMBpnZMDN+MxZNiiicnL8LCM4G0IAA6KSYNgzAAGgBdxwAhnbIACT4fHUx76LiADIbmZzucxqX5+VBmYAVLsAPuMinlfKSSwA-E4AYwYVYv+iX0jJOIIyxAxJiJWBm+FcCygACJALJrgA46wCbzdalKsoPYAKxibaRa0ACxGbAAAhUaGB2tTydQXdwDolZNbADiDgA6x61QfT6nrgkxmSwQEh9AZDEZQY1ZU2Yex45j2QkFHH2El3Mjk1CUiN0hks9lQLn4+y8tySoWagcSrgy+W90UDpWqjXT-viuOaXWZ4jpEhlrH1hrmy18O1OmN+WSe70RBMB9gh8phiNRk8rpJJ1Pp9dg0E5nJ5qCAVTXAFLxgsUWLdFMQrYpq2KOt6iwYomw+Vt2xpTsmTZTVikHWhh2FRdmEw8cpTlDDqTnLh1RI7VVy4QBb0cAA1WSNado1wNLdwN3OD90eBMHWdV0+HPLZLxta9g1DahwxpR99gSI4bRTGMmMPQBNVcAXYG0wzEISCAA)
+
+[📖5주차 과제 3](https://www.typescriptlang.org/ko/play?&classId=2f34722d-e01a-41f3-aa35-6232eed0ed81&assignmentId=9aa2318e-714d-4621-8f82-93d2c0c6d313&submissionId=74f7a0a3-5cdd-d8f3-dfe1-694a5fd6bcd0#code/C4TwDgpgBAqgzhATgSQHYDMD2UC8UDeAsAFBRlSoCGAthAFxzCICWqA5gDRSVv0UCu1AEZIuEapWYAbOlEYt2XSgBNliCHDiz5rNiQC+JEq2BJ0lAMbR4SNFgBMBEuQo16O9gG5n5Hn1SCIojepOTikjJyTLohLipqGlpRCmwhhsTGqKaI5lawCCgYmADMUBAAHqaoynD5tkWORKFkiJhSfB6pBkbE6PyoFsDMmKhQFuqUpjaIABRUtNrRity8sgHComUS0ospSqrqmru6AJRNLurA-Iio5y7k8xAcPvcrTy-34dLPzffxh3APvo0iQAPSggAq4GgAEEpMxKIDev1BsNRmAFMBpnZMDN+MxZNiilAAD51QoOE5OX4WEZwNoQAB0UkwbBmAANAC7jgBDO2QAEnw+MZj30XEAGQ2c-mC5iMvyiqCcwAqXYAfcalQq+UnlgB+JwAxg2qZf9Evp2ScQRliLTUIwoPwCrgCI9ZAAiQCya4AOOsAm81OpSrKD2ACsYm2kSdAAsRmwAAIVGhgdqM2nUb3cA6JZ2AHEHAB1jTuBPQxJiJWDxBVNPXBJjMlmggFU1wCl4yQ+gMhiMoPmsoWSnjmMVCQUccUqXcyJb6fGWWyubyoAL8cVhW55RL9XO5Vwlarp9K5xrtXrN7PZanNPLALejgANV5eM1rtY2l4jpEhtrF9orFGb4VwLKCuz3JvyyAMgwiZ1w3YaNyljeNEz-I8kidLNk2vPgnUATVXAF2Bp0oH0O8SCAA)
 
 ---
 # 4주차
@@ -41,11 +312,7 @@
 
 # 📂Type Alias
 
-- 지금까지 우리는 `type annotation`을 통해 타입을 정의해왔습니다. 
-
-- 이 방법은 편리하지만 `동일한 타입`을 `두번 이상` 사용하는 경우 중복되는 코드가 많아지는 단점이 있습니다. 
-
-- 이제 사용해볼 `type alias`는 타입에 대한 이름을 지정하여 재 사용 가능하도록 하는 구문입니다.
+- `type alias`는 타입에 대한 이름을 지정하여 재 사용 가능하도록 하는 구문입니다.
 
 ```js
 
