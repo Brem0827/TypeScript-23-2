@@ -32,7 +32,8 @@
 3. 💭[3주차](#3주차)➡️
 4. 💭[4주차](#4주차)➡️
 5. 💭[5주차](#5주차)➡️
-6. 🔖[중간고사](#중간고사)➡️
+6. 💭[6주차](#6주차)➡️
+7. 🔖[중간고사](#중간고사)➡️
 
 ---
 # 중간고사
@@ -44,6 +45,134 @@
 [📖3주차 수업 자료](https://gainful-appendix-a7a.notion.site/Object-Union-d9a258182b464231bf3db529290dc480?pvs=4)
 
 [📖4주차 수업 자료](https://gainful-appendix-a7a.notion.site/Type-Alias-Interface-37dba0ea83bb4b40aa24833bcd7bb495)
+
+---
+# 6주차
+
+🔋 2023.10.04
+
+[📖6주차 수업 자료](https://gainful-appendix-a7a.notion.site/Type-Alias-Interface-37dba0ea83bb4b40aa24833bcd7bb495)
+
+# 📂Literal Types
+
+- typescript에서는 `string`이나 `number`와 같은 타입 뿐만 아니라 값 자체를 의미하는 `리터럴 타입`도 정의할 수 있습니다. 이러한 `리터럴 타입`을 `정의`하는 방법과 함께 `타입스크립트`가 `javascript`에서 변수를 선언하는 방식에 따른 동작을 이해할 필요가 있습니다.
+
+```js
+
+let changingString = "Hello World";
+changingString = "안녕하세요.";
+// 위에서 changingString은 가능한 모든 스트링을 나타낼 수 있기 때문에
+// 타입스크립트에서는 아래와 같이 인식합니다.
+changingString; // let changingString: string
+
+const constString = "Hello World";
+// constString은 오로지 "Hello World"라는 문자열만을 의미합니다.
+// 타입스크립트에서는 아래와 같이 인식합니다.
+constString;   //  const constString: "Hello World"
+
+```
+
+```js
+
+let x: "hello" = "hello";
+x = "hello"; // 정상동작
+x = "howdy"; // 에러
+Type '"howdy"' is not assignable to type '"hello"'.Type '"howdy"' is not assignable to type '"hello"'.
+
+```
+
+```js
+
+function printText(s: string, alignment: "left" | "right" | "center") {
+  // ...
+}
+printText("안녕하세요.", "left");
+
+printText("반갑습니다.", "centre");
+Argument of type '"centre"' is not assignable to parameter of type '"left" | "right" | "center"'.Argument of type '"centre"' is not assignable to parameter of type '"left" | "right" | "center"'.
+
+```
+
+```js
+
+function compare(a: string, b: string): -1 | 0 | 1 {
+  return a === b ? 0 : a > b ? 1 : -1;
+}
+
+```
+
+```js
+
+interface Options {
+  width: number;
+}
+function configure(x: Options | "auto") {
+  // ...
+}
+configure({ width: 100 });
+
+configure("auto");
+
+configure("automatic");
+Argument of type '"automatic"' is not assignable to parameter of type 'Options | "auto"'.Argument of type '"automatic"' is not assignable to parameter of type 'Options | "auto"'.
+
+```
+
+# 📂Literal Inference
+
+```js
+
+const obj = { counter: 0 };
+obj.counter = 1;
+
+```
+
+- `TypeScript`는 이전에 0이었던 필드에 1을 할당하는 것을 오류라고 가정하지 않습니다. (const임에도 불구하고) 다르게 말하면, obj.counter에는 0이 아닌 타입인 number로 추론합니다. 
+
+```js
+
+declare function handleRequest(url: string, method: "GET" | "POST"): void;
+
+const req = { url: "https://example.com", method: "GET" };
+handleRequest(req.url, req.method);
+
+Argument of type 'string' is not assignable to parameter of type '"GET" | "POST"'.Argument of type 'string' is not assignable to parameter of type '"GET" | "POST"'.Try
+
+```
+
+- 위의 예제에서 req.method는 "GET"이 아닌 string으로 추론됩니다. req를 생성하고 handleRequest를 호출하는 사이에 “안녕하세요"와 같은 다른 문자열을 req.method에 할당할 수 있기 때문에 TypeScript는 이 코드에 오류가 있는 것으로 간주합니다.
+
+- 이 문제를 해결하기 위해 두가지 방법을 사용 할 수 있습니다.
+
+1. 둘중 하나의 위치에 as를 통해 명시적으로 타입을 지정하는 방법이 있습니다.
+
+```js
+
+// Change 1:
+const req = { url: "https://example.com", method: "GET" as "GET" };
+// Change 2
+handleRequest(req.url, req.method as "GET");
+
+```
+
+- `Change 1`은 "req.method가 항상 `리터럴 타입` "GET"을 갖도록 하여 이후 해당 필드에 "안녕하세요"와 같은 다른 문자열을 할당할 수 없도록 하겠습니다."를 의미합니다. 
+
+- `Change 2`는 "req.method가 "GET" 값을 갖습니다."를 의미합니다.
+
+2. `as const` 를 이용하여 `req 객체` 자체를 `type literals`로 고정합니다.
+
+```js
+
+const req = { url: "https://example.com", method: "GET" } as const;
+handleRequest(req.url, req.method);
+
+```
+
+[📖6주차 과제 1](https://www.typescriptlang.org/play?#code/JYOwLgpgTgZghgYwgAgGIHt0BMAKVsCuCYyA3gFDLLBYBcyAzmFKAOYDclyIcAthPSYsQHLgAcWSeiAK8ARtE5Um6BAGtpshVCXIEcSK3RQAnvQBEgXaHAESvndWYAwToC4QczbIAPty2LyAL7k5KCQsIgoAKIANhDE+CDACHiExGRcNO7ColQ8-FlsuhJJAr7y-spgqhpl2rr6hsZmyOaAIBOACeOAOBO2ugxicQUi9o7OrmAA-IOiQSHg0PBIyADC0ehgABZsKVhEJBRUmYweQ1x5pUKF4pKlMuU6XCrqmnf1BhBGphaAGuOAGp12D8AAF7nY7TYJgEz9ZDbXbIAC8aEwuHwOzSPhicWY6ESyRRsJ8KzWmxEMOInHIAHoKchACdNgA9O5CASh7LIAeccAOh3IQAOzYAXccADIuAH07kIAIWcADHWAFTXyM4QExkFgDHB6KSwABtAC68OQavJUplMGAUCYABF5fQMNglRr9tQ6C0xABGcwAGlOfFK5kANQOAH5qnVcSvQ7QBWAAMQedlWq-tDXAa7yaFhsPqoDicLjcLTtQYApOZAtrsTKGHFsVhjWAFcgMfFsUkLQirYdzGIAEyJ7iuiyAD0bAB1LgEDe1vFKTIQMhkdho4R5ABscxj7NNpdWxjvoDFrAADsjqHADYAOIAIWQACUAIIAWRzATz0pIG31JZNy1Wt5JeLSdYyNsbAGZW2cLIAHpcAFUHAAI5-trnoJsRyjcMnmQSDpzeWdvj+JcgTdc9c2CHUSBgFwoA2UtyzNZFUhId8Dk-MQABZf3bFpLEAVz6wL9ODg2g8dYK-diZzjejFy4ZNRjTNjMMlfMcOAGACIfSssRxWt0goiwxADWj8haQAWdcAAGbAAfl5jBwzKD2MeGoMwQxpPhaDpulbQTUzACwA2zJd+gQCxABKhwAJzq7PTRKpLk+WQQAkGsAEXHkEABh7ABfRwAF0eQQAU2cAABrAB1VmkADpyDlMtUrEAgGHWAAKPUDTAQjN0LKV7zLTdbygSq4E3XCCHw9ZSuQPUpJa+UAEpyRgVxiGAbFZRGeyADU4GiAgIHyuyximLxbm0TcBwERboC6q1YhIKAIAYAhojAABlUFkCmBEAHJzvJA4YHyiF+nQGBhpTMZ4ThC61qgc6Nq4KgqB2vaDuO7JkAAagRAADR1AANVwAPcYS+gABJSHylbkAAWmeoSwC61KqgAGVUCaIGBth8q6gJAAWxiHdCoAJkAgaJC2oW77ogR6sfst6LouERvqtP7kAB-ajpO8HkCh5A4YS07kGR1HrmQAAqZB8rtDHkDEOADQgABJcAZpGsYuopQyutxgmidiUmRHJqmad+5Agn+iAwCakAhd2kWbdYQJgkyuBUtwqBIkQAqFdI2XSEyXnWE3P9Y+W8DPrKqonhTvRELjRPObGSZY4WvwoDKtD89BMrXLL7IAi6+EAD5FL0cSyGtePXSTkpN1m8BU+qTceNMEvgQruInY1CRSN0LbPcB0WQch3XDVoZGaACTduUAEM7l9IM41+QBLAEqa7eVrx9BCf0a3QTt6nrpZw2XvAWvhaBsWEW7sBxsm6b38dFaeq4Lgz856eHFpLQANeOAAOa7eJk96ABc5wAMosQMADWd28B4mACBDYIN18oMDQk-L2L8QagM3O6bkgAIyegWhDBGRbrLgQPg2ePswaQxIYARNHoGuWodGfM6BYipVWKwfKQCfZdUCF1IAA)
+
+[📖6주차 과제 2](https://www.typescriptlang.org/play?#code/JYOwLgpgTgZghgYwgAgIIBN1QgZx8gbwChlkFgwBPALmRzClAHMBuE5dYexhMW75mwC+RIqEixEKVL2AA3CpULsqABwj8Gg9iDgBbDXS0hWREWPDR4SZAGUwAV3QRwy0sHS0QDvQCNobKS6BpqMJoHIcEyG3n4B7HCY2Hi0GFi4OBHOqnBQYAbgodqkTFCJhgLhCbIKYMC4qTWKANoAusKiaigAInBgcMgAvHaOzuBtbEQIAPYg9Bx9cLS9-UPIzezEpKQARB47tACMADTsu8EQB8g7gAJ1gAOTgBNrO6fb11GXtABMJ2dvSRlXLava7kKhXHaAHEHAB1jz1+u04Al44MAqDWACobADa1O1+Qhe2x22Vy+RcYHBgBe5wAXK4AGReQgFeawCaq4Afmthrx2pXK4M+dMAIo3MvGIOq1eo4K4bYFuMXXLrghAAGwcvl5Yp2F3BgBBVwA6HYAP2sAGe2AWB7kIBN5sAIqOAGs6sWKcXDxUqpbQdjNLPRFcDlfoPtdbAB1ZCAGRnAA2dd3NwJEr1a7EtpCBu32X1x5zd4MALuOADVXAALjzp27yun0+cb+6TwgKt9sU4MAAb2ABoHnfCuFokXbAC6rgBaxwAAzZjsXn8RAcnkCiS7YAUVsACeOAD3HkIyM2znOCAMzcjP8+QUIUiq1Rl22kFyhV5lkqwej5CAEqHKQOg68Q9sw6QI9brjHkDPO-vroBUHsAAJOAQDGF9Fs0-fpm-yFrQ667KClDgiOgA5M9W1wInW-bXKiBrthenYEr2xLgoAvTWfhOnZTu6OwACzzp2i6Crgq5iqBeKbvasyQE6u54i+Oy4cgRqJgOgAto8gLaADFr57bLery0bs9GyvKsHxgYOGfsggAPo+ihqmsJN6-NeyC3uuezoFcxHPgmdqAKgTgA-3RCP7up8AAM5FAcKIHFuB4LQrB+K1jwiE7GiqEieh3aEn2ZJUrS+EAYR4KHGRAEUcuVG0KKwLiZKlDqNK24ydcbEajq+rGmaVqXqQWk6QBD4AKxGXJdqADqzgAYQ4AI5NWdmhmxQ5RZKi5dqVu58FeeCzZtsJolwYFmHgOCw5juFLKRXapE8uRTR1Al6xrlaElpURUk7pt2XGdc03Hqe6naZp4a4rpD4AGzVURNyACBr9UtV8PwsokBaOXeYGlna0F9Z5wD1khKEjQFPZEpNdq4bNeLzdcnJLbFK0rolG0Sql6V2g6TEkixslERxXG8fxQlFRdN5XeV+m0AA7Pd4Kvnc37kb+Xy5u1X2dS63XXG5LEeYi3m+eDAEYVD3kUtS9JMgRZTTnac7Ix9qNrUlYn7TskmZQTB01dcuV6qphUWpT2nUyyD4AByM3aiZ3Ear3IJ8-4fR1TldX91y9YL-XA95Q1+VT4vjZLU2HnDuwIzsSMLmr30a9sKXa9tGXSXrroGzsx0nmeFOhpdmw01cACcdvXIApeMQo9zvfPZ3Oe7z3s7ADftAyDOzIcHFuh5DwUw3hcsRQrRHRSrfIJ9RyVa5JjG4PjWtscT3F8YJZ3FcgpWW3iD6HHZAFsYmgA1408bPWQf7uNz9IItwLxb+53osdn3QVYXa0thcPc2j1FMWqwKeKicMYSlTtjLcGcl6HR2EbfKakC5XnDEQMMRAYAOBALIWYyBVBhDAPYJwxIACSIAYDTAABT0AIYUEYVCwAAEpxQOhwNMGUEAAB0MpphMDIb8AABoQ7otAAAkBBKFjDAGwjwOJkCJkACGdwjRGjGJGwi40jAAZDYmBRYjlHvGkYAH4nAAxg1opR4A2GfWSDgNh4EhDIBEdo0x5iMhsMfmAaRjJjG0OcWHPsbiuQePEWwwiQheHsDoZMUgAB6CJTCWHsM4dwnYgAdNYNMgQAlV2AF0O6gOwwnsHsRIuKq1LGkKgAAUUQAACzIWQgplAGGDAAHx3mADAapK1KBsK6EMQYwwGKOhJHQ2iMTWEcK4WQ3hgBQicABqdtBBLHBkfI2xBAakqLdMEnJF5fgQBlDgFAgzZjMOGfEsZUzaAFTmXIhRyzVG8PWSJcMOTzDoEWGw4pZSECVIoSY+hQxGlAhweIfB4jiGkM+bQh5YSgA)
+
+[📖6주차 과제 3](https://www.typescriptlang.org/play?#code/JYOwLgpgTgZghgYwgAgMoFcBGBhOkDmA9lAJ7IDeAUMsmCQA4QBcyAzmFKPgNzXIC2eaMDgAbFu04gelAL6VKoSLEQoAKnHysKfOowkcuvGgDcx6Zm0PTe8xeGjwkybKMJgAFhG1UawSPwAkgAmLCDo-JjQxsj0UITB6AhgAHJw-JaSRnxxwEhhEVFQMQhCRKQGUjI0rFi4BMQkLBg4ZY0xYJqsLBpaANoAurYKeigAInhwyAC8Lm6e3oO8CgiEIOzIwZMsE50zyH18vjTIAET+EEHBpywAjAA0fDSncQlJqekQN2eAFn2AIDXIQAXnYAaJcBp0eJzOuSQ3wAzAAGRHwiEnU6lBqkb6nQAa44ANTvBTzOtVaGJI32OkNOoyxgEGB7EEyHPQTKESiLGAFy7ToTZCjnp0tN9DoydMK+Qwviw0YQ3FAGaLTmZRBYsT9AKg1XOFPMJNApjKp4qx7BIoi+vL1iuVksACXOAH4nAD2jGsZ8khAz4Wp1hPOARC3wATGaXvFEsk0hksYAUPsAFx3IQC1M4AUHsAA5Ny57QiXIAAsSORnvREHKZMleOTRLqbUxLF1YsYWMAGqv0s1MoScMRYwAOzYANpsdNHdqP5rEF2pF8upktWMuLlItadOgBhlwCJ7V2Tj3IZXewbJUaTRPUVO24AfccANZ2L7uE13dlG6r2XH0sWEB17Bj5hyWAEqHADfLgAI55CAFrHAJvNgBU14tAzyNNbizbNKVzfMsUAA6HABweoDiXqPNGnJQd9WrSU-0AhszmZYQW0lQADmsAFm7F2XM4+wHYVVyracx2Ibdnl3SVAAd1wBJgePZAKI9UVKPXM4YHQEBkmANYmLOFizj-QBKsa450TjPbiL09C4rm+dN7yDd5Q2nDigVBIDUz9AAOJEAyg1DC3xAMkLLAsh0pEczjpbdTnw5s2UlTluQDKiWCFRlaP4zCzgY2VcOY8w9M4wceMcvVnNOTdTUHKKlWnQAbocAGFX5NPN0VMpNSb2QABWLS3hDT4sUAAJrAFQJ5BABqhwBM9pfIzOBhFh01K8yc3srEi1s0tSTQ4UMOnOs3I81ksUAF+WD0ABdGX0ABkXyL8rpqKCtKQvo6VGMiyTotqur5Nw4LxsNOgtwOhUjslOrAFLxvKXQKo5VO9a4WAANgqx9dKxQAIGvY5BAB0OwAfZfakDvluX0sws-rJXgxDhpQ8sErorFABtawAFFqmpsZslQAAGsAX4m1s9fyDkHc6kvCiTboywHYs1M7toujcrtSvj6ctM5HrkuL8vPN6io+74AHZfp06rJUAEkbABdxwARPoMsEtKhlhfQATl6yCEbOQbPTskaK3QpLXNw9z8cIs4fMhCiqQ2gKqdZmm9oi1mpNnBc4pZrmkpSumPZy57FNe3jUWKz7kBMyWqufM4O1jRNIc65BYTMxF4aNvWbINlHoONsaksm83pqt04OzJpyHcpmjnYEqVxxuj351Op3ffr-2m7u+PD2DmglJ7S8I++DWY6fadAAgOwAdluQF9AAmmwATucACMnk7TEyeozvqs9OJGhpJVGHNXNnpIAvGWTL0jK97avApXOvQob-b3e7041Vb2v24fzvn4Z19AA6lwA-Z192QAPQq4dRZ3AgqiB8Us46nEAB+1gAGzuQIAB6XAAqgx+Vefo4ZbwPgNHOlJDZ4ILoleuZt0Kly8tbK+fIb5t2HPXWmXdf5nEABCzgBdDvfltT+05v5cw9raB0AsXonldJQVY6wwCxCkGAQI3oQAwEIPsAAFAgeYXhuhzHcBogAlDMAAfEOCRrBpQQAAHRuHwMogABnIy4yBAhjBYAAEnIGo7R3gzER1kMgOWgAQzpcW49RniYGxwgD4wmgBKmsCe4hYrAzGph8YAFznAAyi0RA8MTgnxMsqQHxgABhcAKHjmSPHxKIfmMxowfGABjBwANePFLiWYspjQzGUJ8YAHYX4H1I0RUroLS4D0GUfyAxyBrFqHFIE-kFTxQ8mQAANWihMzQZipyyGsTo1ZOjbDLC2J0MxiioAAFFEAeGUbkcAdiggKMIJsygQA)
 
 ---
 # 5주차
@@ -179,121 +308,6 @@ interface User {
 
 type ID = string | number;
 type AnimalOrID = Animal | ID;
-
-```
-
-# 📂Literal Types
-
-- typescript에서는 `string`이나 `number`와 같은 타입 뿐만 아니라 값 자체를 의미하는 `리터럴 타입`도 정의할 수 있습니다. 이러한 `리터럴 타입`을 `정의`하는 방법과 함께 `타입스크립트`가 `javascript`에서 변수를 선언하는 방식에 따른 동작을 이해할 필요가 있습니다.
-
-```js
-
-let changingString = "Hello World";
-changingString = "안녕하세요.";
-// 위에서 changingString은 가능한 모든 스트링을 나타낼 수 있기 때문에
-// 타입스크립트에서는 아래와 같이 인식합니다.
-changingString; // let changingString: string
-
-const constString = "Hello World";
-// constString은 오로지 "Hello World"라는 문자열만을 의미합니다.
-// 타입스크립트에서는 아래와 같이 인식합니다.
-constString;   //  const constString: "Hello World"
-
-```
-
-```js
-
-let x: "hello" = "hello";
-x = "hello"; // 정상동작
-x = "howdy"; // 에러
-Type '"howdy"' is not assignable to type '"hello"'.Type '"howdy"' is not assignable to type '"hello"'.
-
-```
-
-```js
-
-function printText(s: string, alignment: "left" | "right" | "center") {
-  // ...
-}
-printText("안녕하세요.", "left");
-
-printText("반갑습니다.", "centre");
-Argument of type '"centre"' is not assignable to parameter of type '"left" | "right" | "center"'.Argument of type '"centre"' is not assignable to parameter of type '"left" | "right" | "center"'.
-
-```
-
-```js
-
-function compare(a: string, b: string): -1 | 0 | 1 {
-  return a === b ? 0 : a > b ? 1 : -1;
-}
-
-```
-
-```js
-
-interface Options {
-  width: number;
-}
-function configure(x: Options | "auto") {
-  // ...
-}
-configure({ width: 100 });
-
-configure("auto");
-
-configure("automatic");
-Argument of type '"automatic"' is not assignable to parameter of type 'Options | "auto"'.Argument of type '"automatic"' is not assignable to parameter of type 'Options | "auto"'.
-
-```
-
-# 📂Literal Inference
-
-```js
-
-const obj = { counter: 0 };
-obj.counter = 1;
-
-```
-
-- `TypeScript`는 이전에 0이었던 필드에 1을 할당하는 것을 오류라고 가정하지 않습니다. (const임에도 불구하고) 다르게 말하면, obj.counter에는 0이 아닌 타입인 number로 추론합니다. 
-
-```js
-
-declare function handleRequest(url: string, method: "GET" | "POST"): void;
-
-const req = { url: "https://example.com", method: "GET" };
-handleRequest(req.url, req.method);
-
-Argument of type 'string' is not assignable to parameter of type '"GET" | "POST"'.Argument of type 'string' is not assignable to parameter of type '"GET" | "POST"'.Try
-
-```
-
-- 위의 예제에서 req.method는 "GET"이 아닌 string으로 추론됩니다. req를 생성하고 handleRequest를 호출하는 사이에 “안녕하세요"와 같은 다른 문자열을 req.method에 할당할 수 있기 때문에 TypeScript는 이 코드에 오류가 있는 것으로 간주합니다.
-
-- 이 문제를 해결하기 위해 두가지 방법을 사용 할 수 있습니다.
-
-1. 둘중 하나의 위치에 as를 통해 명시적으로 타입을 지정하는 방법이 있습니다.
-
-```js
-
-// Change 1:
-const req = { url: "https://example.com", method: "GET" as "GET" };
-// Change 2
-handleRequest(req.url, req.method as "GET");
-
-```
-
-- `Change 1`은 "req.method가 항상 `리터럴 타입` "GET"을 갖도록 하여 이후 해당 필드에 "안녕하세요"와 같은 다른 문자열을 할당할 수 없도록 하겠습니다."를 의미합니다. 
-
-- `Change 2`는 "req.method가 "GET" 값을 갖습니다."를 의미합니다.
-
-2. `as const` 를 이용하여 `req 객체` 자체를 `type literals`로 고정합니다.
-
-```js
-
-const req = { url: "https://example.com", method: "GET" } as const;
-handleRequest(req.url, req.method);
 
 ```
 
