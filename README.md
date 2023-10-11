@@ -44,7 +44,176 @@
 
 [📖3주차 수업 자료](https://gainful-appendix-a7a.notion.site/Object-Union-d9a258182b464231bf3db529290dc480?pvs=4)
 
-[📖4주차 수업 자료](https://gainful-appendix-a7a.notion.site/Type-Alias-Interface-37dba0ea83bb4b40aa24833bcd7bb495)
+[📖4~6주차 수업 자료](https://gainful-appendix-a7a.notion.site/Type-Alias-Interface-37dba0ea83bb4b40aa24833bcd7bb495)
+
+## 🏃시험 관련내용
+
+- 수요일 오전 10시 ~ 10시50분
+
+- 객관식 + 주관식 문제
+
+- 주관식 : 예제코드 빈칸 채우기, 코드 해석 1문제(동작 로직) -> 어떤걸 인수로 받는지 등등.. 
+
+- 문항: 20문제
+
+## ❗실습 문제들
+
+- 🔥 6주차
+
+1. 문제 1번
+
+[문제 1](https://www.typescriptlang.org/play?#code/MYewdgzgLgBAJgQygmBeGBtAUDGBvHXGAIgEs5iAuGARgBpDdiwEBbAUypMAE6wAcnAJteIMiJBAHNO1AEz1GouHABO7CBC4ERTYKSgBPLsUA4g4A6xoXKZxS0RaWBQDgVBrAFQ2AbWuJyAvsKLE47AA4IilAcYPbUxIAvc4AXK4AMizCArzWAmquAPzVmIsRiigh+BlJJgCKN6T4IdqQAbjqkKlzYmvjmPnr+kiTAADYArgBGxfXMbK3EgCCrgDodgB+1gBntgLA9MICbzYAio4A1ne71Xo0a9STNQ6BhKvbe-SwcBgDKAOowgDIzgA2dvKuaHnIAuoTruJtM5FxSRyQnIaAF3HABqrgAFxvqiCS-P5yYg5JQqNTUL4+bR6AyAAN7AA0DkIsVigNjsBkALquAFrHAADNbk8-18ASCIXYYQMgBRWwAJ44APcZgqUhmWyuQiAGZCrzSlAKlUatQ6ppURkdgYOj08T5AazOTBACVDsRZjxEzxEb1wHwaGR+1EFtLVEUAqD2AAEnAIBjouh0ktcIRylU6kaxHR+giHMAOTMq3wEonhEhOObU-W0vyBYKhCPEQC9NQ6ebSsjkhgAWEW0sUS8VSzAbRpMBURPZQA4qpjWkhpmALIEswAtozAKYAYtb1RBNIjlTV0LUVXV6-wyDdTDpggAfRlzzZa942vd7eVFkCjUHNWwYGQCoE4Af7sMztaUgADAWFJ7kabNL6dP6SCYQ5ZrLZk84Y324-TE0zkxieJkjSTN+SGGh83dMpKmLW8ZQHcttmHXYxzrAE9wiMYplmRYVkaA0iCNGATQ3c0YAAVl3U4IkAHVnAAwhwARydPX4d3da8kW9fo-SxXEJxIN9CQ-UlKW-Y1fwTRlmQidkuQzOEswFEg8yKAsYMleCyy2ZCRyrND+PrTCSFkrUdWXEjV3EwgyK3GAADZqKGbhABA1+iWOkWQMg9TiUR9HiA2DfjQ3fYkIijMSSIkhkkwMNN5IyRShnyVToPFWDqk0+pBwrFDFXAGtoHQgYaMbGcW3bTsewIyzIusuFyIAdkcgwbV4J0CxdGApFhLyOK9XzuMfAwXyCwTw0cVxe37AS-ykwC4kSeKfESgxhRSrz1Lg2otK2YhKzafSkOKoZsJmRd8LWGrSPq2yAA5moiIFeAWdyurdXrEX6u8Mn8kgcVfMNhIickqSmqL-2k4yNSWpgVoiZLRU2jLtqyo79t9Q7tOO9UuW1XVqsNNc6rNWyAE4HpIQBS8cMZzXpkK9PtvQcHwxAKAZC5NwrBuF42igDYvTUCFPAgxIPWkokZLBCiGynTdny2sDIwkrp2bVsO27czCNwYjrpJrgaEvOEpyBQAa8cEDqzyNj6by4+9fqMUxRsB0KSC-bmMl5iH5uAmGSDhkgxcRtKNJR2U0dyvTlSV7GsImM68K1q6sDeIA)
+
+- 위 링크의 데이터 구조를 파악하고 type을 정의해보세요.
+
+- type, interface 사용
+
+- 리터럴 타입 사용
+
+- eslint 체크
+
+2. 문제 2번
+
+[문제 2](https://www.typescriptlang.org/play?#code/MYewdgzgLgBAJgQygmBeGBtAUDGBvHXGAIgEsoBTAWwEk5iAuGARgBpDdiAHAJxDgCuwKADkEVCoxKALPsAgNTEAXnYBolhcXZESvUsElMAzAAYjB9UWLAkFAOYgeATynFAGuOANTrUcSEAQCMAwpZt7KQINTig7Ll0SQEGBp3dQkipLHlIEABtHQBcu4g8AX1MwhCsIKWwEkISScMjHUDTbeMriADd0gSjiaUBUGpyE-I9cCoTiao7oOzTJAtCWto7ABLnAH4nAHtHe0NyPAF1CfsGPMkpaeiYAJmnuPkFhMQlHQBQ+wAuOmEBamcAUHsABycbOLR0pABZjCZ9hZKIEHExnG5zl4-AFbOD8AMqhEOoANVbi004SUoKXSjkADs2ADaa1rhdmZkMVSkihjNRrUQPUeF8Zq00u1HIAYZcAie0kohkjQ0jQjFGOcaTZlC1nsiH4wA+44Aazt5pK2O1MNIO1DoUj0514-CEonEHUAJUOAG+XAARzMEALWOATebACprzIu2iizEBQKFIOs8McgAOhwA4PY6Yf5Qd6mILkTUIbaHZjEslUhkIYADmsALN28-lVIolJhlULhsIiiF1BqxzhSjqAB3XAJMDSpgGb2lQjHQAZgIwMJSOAJWZy45bYBKsdrGw021Jav25E1xxgf11lwNN0rVcUKkdPyiJwAHMZzp6wY5XIGfMGvUEw0jhZGYhiL9iKLjEyRsnlzhTs5hqUiC1fzAyS1+SF7CFqyHWN8ybUVwnFUtALmRxABuhwAYVaHFUx0IdVJyOKQAFY531a4jUcQAAmsAVAmYEAGqHAEz2401xSX4mD+bCd2BOEzxIQ9oWPViEXDS80RvYY7wfRxABfl+VAAXR41AAZF9NXyzKlygAvj6UZbsyzgiFSNAz9G2UiExSmJSgJIEjAFLxlCR1VdCJ0OLUmAANjwq5DVuCFAAga5dAB0OwAfZdo50pGYE5AV3bjfQDTjYRDNjeLpCFABtawAFFu7YghITRxAAAawBfidk-Y3wUvMlNikhiyZGDZjZDoPO0xTdKK4gDLU2CKscMzByRYciFHOtxyFTC7JgAB2JyF0IiFABJGwAXccAET6V1UOd-NOABOZiPVCiEOP2IM1sRYY6tiZLUrxCFnw0DMRnknMdKaOqSsa8rpRIblqoK2rC08KDDN04ziCQizOqshszD66dN2GgjXJIIkXg+Pz6JgPRtyMEKooRSEj0i08eIvOr0QO+Mjsh4kX1yi6Pxq663t-VSyu+p72rAwrKYammNMhhU-twLqyQw2zp0WsGXI6QAIDsAHZaYGNQAJpsAE7nAAjJ2Gok3JikZYlGwvRk993PXbKejPGcTS5M02JoU8su8ntZ-W6WeaiFumegVGZ-ZmjNZ4hjUADqXAH7OjmYC5nqgd5gL3TMPVnMXRxAA-awAGzpgQAHpcAFUHzXlqQgpWsw91DdioU2rjVa12lKf22MUvxx9iBOvk5MpM2Xopy2-1Kl2bZIQAIWcAXQ77aIcC9PeiZPqab6llWdrULrLBtiwIA)
+
+- 위 링크의 데이터를 바탕으로 타입을 정의해보세요.
+
+- type, interface 사용
+
+- 리터럴 타입 사용
+
+- eslint 확인
+
+- 🔥 5주차
+
+1. 문제 1번
+
+![문제 1]('./image/thumbnail2.png')
+
+- Type Aliases 를 사용하여 위의 코드를 리펙토링해 보세요.
+- Interfaces를 사용하여 위의 코드를 리펙토링해 보세요.
+
+2. 문제 2번
+
+- 실습1에서 만든 코드에서 추가로 printAdminUserInfo 함수 구현
+- 해당 함수에서는 기존의 User정보에 role이라는 컬럼을 추가해서 출력
+- 기존의 Interface, type을 확장
+
+3. [문제3](https://www.typescriptlang.org/play?#code/MYewdgzgLgBAJgQygmBeGBtAUDGBvHXGAIigE8AHAU2IC4S4QBzYgGkN2LAQFsb7igU87AJUNsOJBE34wArOyIkA7lQCWTABZQ6MAEwAGeUWIAjAE5UqcbcUA1nYA6lm4BCe4oQC+hggtKVpxRi0NObj5rQAuO0LEvSWkdQKVVDS16AEYDcRNzS2tADxXAE5aXXHdCTyNyamtgJEijYN9AD+666s5o7QBmOOJlNU1tABYO0AAbEFNrQACawFQJgpgi3BLOMt9KrQ7a60AVefWmiSltZI6uxLaBkGHRgUAHdcBJgenXLABdLCA)
+
+- 위 링크에서 포함된 데이터 세트에 대한 타입과 인터페이스를 지정하세요.
+- 그리고 강아지 또는 고양이만 console로 출력하는 함수를 만들어 보세요.
+
+- printData("dog")
+- printData("cat")
+
+4. [문제4](https://www.typescriptlang.org/play?#code/MYewdgzgLgBAJgQygmBeGBtA3gKBvmAIgEs5CAuIgBwEZCAaPAwsBAWwFMKjAagcB+ahk3yEqAJ2LAulGgFYADHMYEi0EMADW3GoqFFgSDgHMQogJ7dCgXaHAESuDlhOMQigArmCgXtAUkJMAvkowuPakFlQATHbMrJwWgB6NgB1LgIG9UcJiElIwsgo5gcKqGtwyeXoGxmYWgCATgAnjgDgTtiWEEFQcwBbEAOz0WQBsAOIAQjAASgCCALK++AFMwcyhlCIAzKlEMZmEgA9LgCqDgARzqyLiktzhOTr2BZqUp436UEYm5ouAGuOAGp0HEMQAXhuT-oFzYQLagAFgO6wslkArn0HdLHa7yc7MS7cJZI4R3B4VRY2A6OZwgNweSiI-6zXQkMiLKgycHsDaAFnXAADNgAfl2FHTLaM7olRQNRXLI8wiY8pPIg1ep4pyudwWGQ+HB+AC6OBwADM3MAoMRwPBpYT3AA1BAAGxcHAAFPiZVBKNBxGBDAAfMAuNgAIw4om6cI45FdHq9AEo5iaOLBRBwIC4TVAAMpQB2GGB2xPER3oADkmYA3Kr8MQ1RaoKYWiA1XqCUS0KgswHPaJMyHdPhI9HYwmkzAANToAAG9EABquAD3HAAA1lAAJFgLb6YABaSs2oMAOj5ABk1KaOJ304YLUG-IAFsb7eeUfhgHBNEA4MELxdLHHLi4NsFrWftu6bgIIbZj8bTjo9v23QjqOKYwFOM4cjAABUMAWjQ84wFQCCiNeACS7hWvqRJBgA9FyQYruum5hjujr7keJ66H4TCRlALiiGAMC-h2AGGIqqqIMgy5qiYACiCDAAAFhaUEgHALhauBWCkOQH6Ot06zyexPocv6boNt0lwaYG3owCKjwqUm3TWi+AD8xm7i6mletp3wcJZCmGNpLTAE57F+EGaAAHxBEwoCQLAWC3nASn0mpGSmTh7jaXyGjdIZZj2T8rmtDA57oGIElSVAp4wGGEZRn+5HJv26EACLkFOpABDAgAu44AIZ3VVg6x1aOgCVNS1vqriAG76GR7GUceeZMHeZm4SxxVsV2vbPkSxpmpaE2xb6Qb5XR03-rNwEwIANeOAAc1LWXHVgAuc4AMosHYANZ0tUlph+H2+a3kWnw-N5rHbbuQEwAOMA8PVgARk8dDkPWNL1ue9W2ld9v08IAiaPHW5oMBeAEAgGGy4miAe4faVQaKkGQA)
+
+- 지금까지 배운 내용을 바탕으로 지난시간에 진행했던 실습을 리펙토링 해 보세요.
+
+- type 또는 interface 사용
+
+- literal types 적용
+
+- 🔥 4주차
+
+```js
+
+const data = [{
+    "id": "p1",
+    "name": "사과",
+    "price": 1500,
+    "stock": 10,
+    "category": "식품",
+    "discount": "10%"
+  },
+  {
+    "id": "p2",
+    "name": "노트북",
+    "price": 1500000,
+    "stock": 5,
+    "category": "전자제품",
+    "spec": "i7, 16GB RAM"
+  },
+  {
+    "id": "p3",
+    "name": "티셔츠",
+    "price": 20000,
+    "stock": 20,
+    "category": "의류",
+    "size": "M"
+  },
+  {
+    "id": "p4",
+    "name": "식빵",
+    "price": 2500,
+    "stock": 30,
+    "category": "식품",
+    "discount": 500
+  },
+  {
+    "id": "p5",
+    "name": "휴대폰",
+    "price": 1000000,
+    "stock": 10,
+    "category": "전자제품",
+    "discount": "5%"
+}]
+
+```
+
+![문제 1]('./image/thumbnail.png')
+
+- 🔥 3주차
+
+1. 위 함수의 문제점을 찾아보세요. 위 함수가 문제가 발생하는 케이스를 작성하고 해결하기 위해서 어떻게 해야할지 코드를 수정해보세요.
+
+```js
+
+function calculateAverage(scores: number[]) {
+  let total = 0;
+  let count = 0;
+  for (const score of scores) {
+    if (score) {
+      total += score;
+      count++;
+    }
+  }
+  return total / count;
+}
+
+```
+
+2. 위 코드에서 
+
+```js
+
+function printBoard(result: any) {
+  console.log(result)
+}
+
+```
+
+- 이 부분만 수정해서 아래와 같이 출력되도록 수정해보세요.
+그리고 result: any 부분을 아래의 출력에 필요한 데이터만 받도록 처리하고 type 선언을 해주세요.
+
+```js
+
+function printBoard(result: any) {
+  console.log(result)
+}
+
+fetch('https://static-contents-serve.s3.ap-northeast-2.amazonaws.com/response.json').then((result)=>{
+  return result.json()
+}).then(list => {
+  list.forEach((data: any)=>{
+    printBoard(data)
+  })
+}).catch(err => {
+  console.log(err)
+});
+
+```
 
 ---
 # 6주차
