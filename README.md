@@ -46,6 +46,9 @@
 
 [📖4~6주차 수업 자료](https://gainful-appendix-a7a.notion.site/Type-Alias-Interface-37dba0ea83bb4b40aa24833bcd7bb495)
 
+[📖중간고사]('./중간고사.md')
+
+
 ## 🏃시험 관련내용
 
 [🔥중간고사🔥]('./중간고사.md')
