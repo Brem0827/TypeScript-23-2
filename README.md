@@ -41,7 +41,88 @@
 
 🔋 2023.10.25
 
+[📖7주차 수업 자료](https://gainful-appendix-a7a.notion.site/null-undefined-generic-7ba912c878ed4576931bb1aec6944caa)
 
+# null and undefined
+
+- `타입스크립트에서`도 위의 두 값을 의미하는 타입이 존재하며 이 타입들이 동작하는 방식은 `strictNullChecks` 옵션의 사용 여부에 따라 달라집니다.
+
+## strictNullChecks off
+
+- `strictNullChecks`를 끄면 `null`이거나 `undefined`값에 정상적으로 액세스할 수 있으며, `null` 및 `undefined`은 모든 유형의 프로퍼티에 할당할 수 있습니다.
+
+```tsx
+
+function greet(name?: string) {
+    // 'name'은 string 또는 undefined 일 수 있습니다.
+    return "Hello, " + name.toUpperCase();
+}
+
+```
+
+## strictNullChecks on
+
+- `strictNullChecks`를 켜면 값이 `null`이거나 `undefined`인 경우 해당 값에 메서드나 속성에 접근하기 전에 값을 테스트해야 합니다.
+
+```tsx
+
+function greet(name?: string) {
+    // 'name'은 string 또는 undefined 일 수 있습니다.
+    return "Hello, " + name.toUpperCase();
+}
+
+```
+
+## Non-null Assertion Operator (Postfix !)
+
+- `타입스크립트`에는 직접적인 체크 없이 타입에서 `null` 과 `undefined`을 제거하는 특별한 구문도 있습니다. 
+
+- 표현식 뒤에 `!` 을 사용하면 사실상 값이 `null` 과 `undefined` 이 아니라는 것을 의미합니다.
+
+```tsx
+
+function liveDangerously(x?: number | null) {
+  // No error
+  console.log(x!.toFixed());
+}
+
+```
+
+# Generic Type 
+
+- `C# 및 Java`와 같은 언어에서 `재사용 가능`한 컴포넌트를 만들기 위한 기능 중 하나는 `generics`입니다.
+
+- 이는 `단일 타입`이 아닌 `다양한 타입`에서 작동할 수 있는 `컴포넌트`를 만들 수 있는 기능입니다. 
+
+```tsx
+
+function identity(arg: string|number): string|number {
+  return arg;
+}
+
+let id = identity("dealim"); //let id: string | number
+
+```
+```tsx
+
+function identity<Type>(arg: Type): Type {
+  return arg;
+}
+
+let id = identity<string>("dealim"); //let id: string
+let id2 = identity<number>(52); //let id: number
+let id3 = identity<boolean>(true); //let id: boolean
+
+let nid = identity("dealim"); //let id: string
+let nid2 = identity(52); //let id: number
+let nid3 = identity(true); //let id: boolean
+
+```
+
+- 해당 함수를 호출할때는 두가지 방법으로 호출이 가능합니다.
+
+1. 인수 호출 전 <> 안에 캡쳐할 타입을 명시적으로 선언하기
+2. 평소대로 호출하고 인수값을 바탕으로 typescript가 타입을 추론하도록 하기
 
 ---
 # 중간고사
