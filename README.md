@@ -35,6 +35,149 @@
 6. 💭[6주차](#6주차)➡️
 7. 🔖[중간고사](#중간고사)➡️
 8. 💭[7주차](#7주차)➡️
+9. 💭[8주차](#8주차)➡️
+
+---
+# 8주차
+
+🔋 2023.11.01
+
+[📖8주차 수업 자료](https://gainful-appendix-a7a.notion.site/null-undefined-generic-7ba912c878ed4576931bb1aec6944caa)
+
+[📖참고 자료](https://react.dev/learn/typescript)
+
+# 일반적인 Generic Type 사용
+
+```tsx
+
+function identity<Type>(arg: Type): Type {
+  return arg;
+}
+
+let myIdentity = identity;
+
+const data = myIdentity("dealim");
+
+```
+
+- 예제
+
+```tsx
+
+const users = [
+    { id: 1, name: '홍길동' },
+    { id: 2, name: '김선달' }
+];
+
+const products = [
+    { id: 'a', title: '셔츠' },
+    { id: 'b', title: '모자' }
+];
+
+function getUser(id) {
+    return users.find(user => user.id === id);
+}
+
+function getProduct(id) {
+    return products.find(product => product.id === id);
+}
+
+function addUser(user) {
+    users.push(user);
+}
+
+function addProduct(product) {
+    products.push(product);
+}
+
+```
+
+- 리팩토링
+
+```tsx
+
+interface User {
+    id: number;
+    name: string;
+}
+
+interface Product {
+    id: string;
+    title: string;
+}
+
+const users: User[] = [
+    { id: 1, name: '홍길동' },
+    { id: 2, name: '김선달' }
+];
+const products: Product[] = [
+    { id: 'a', title: '셔츠' },
+    { id: 'b', title: '모자' }
+];
+
+function getUser(id: number): User | undefined {
+    return users.find(user => user.id === id);
+}
+
+function getProduct(id: string): Product | undefined {
+    return products.find(product => product.id === id);
+}
+
+function addUser(user: User): void {
+    users.push(user);
+}
+
+function addProduct(product: Product): void {
+    products.push(product);
+}
+
+```
+
+- generic 사용
+
+
+```tsx
+
+interface User {
+    id: number;
+    name: string;
+}
+
+interface Product {
+    id: string;
+    title: string;
+}
+
+const users: User[] = [
+    { id: 1, name: '홍길동' },
+    { id: 2, name: '김선달' }
+];
+const products: Product[] = [
+    { id: 'a', title: '셔츠' },
+    { id: 'b', title: '모자' }
+];
+
+
+interface Identifiable {
+    id: string|number;
+}
+
+function getEntity<T extends Identifiable>(id: Identifiable, entities: T[]): T | undefined {
+	
+    return entities.find(entity => entity.id === id);
+}
+
+function addEntity<T extends Identifiable>(entity: T, entities: T[]): void {
+    entities.push(entity);
+}
+
+const retrievedUser = getEntity(1, users);
+const retrievedProduct = getEntity('a', products);
+
+addEntity({ id: 3, name: 'Charlie' }, users);
+addEntity({ id: 'c', title: 'Shoes' }, products);
+
+```
 
 ---
 # 7주차
