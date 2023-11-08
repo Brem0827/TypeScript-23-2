@@ -53,6 +53,49 @@
 
 </details>
 
+<details><summary>💭 TypeScript with React Components </summary>
+
+- React로 타입스크립트를 작성하는 것은 자바스크립트를 작성하는 것과 비슷합니다. 
+
+- 컴포넌트로 작업할 때 가장 큰 차이점은 컴포넌트의 props에 타입을 제공할 수 있다는 점입니다. 
+
+```jsx
+
+interface MyButtonProps {
+  title: string;
+  disabled: boolean;
+}
+
+function MyButton({ title, disabled }: MyButtonProps) {
+  return <button disabled={disabled}>{title}</button>;
+}
+
+export default function MyApp() {
+  return (
+    <div>
+      <h1>환영합니다.</h1>
+      <MyButton title="버튼" disabled={true} />
+    </div>
+  );
+}
+
+```
+
+</details>
+
+<details><summary>💭 Typescript with Hooks </summary>
+
+  <details><summary>💭 useState </summary>
+
+
+  </details>
+
+</details>
+
+[📖실습1](https://codesandbox.io/s/silseub1-forked-8kjsq4?file=/App.tsx)
+
+[📖실습2](https://codesandbox.io/s/silseub1-forked-8kjsq4?file=/App.tsx)
+
 ---
 # 8주차
 
