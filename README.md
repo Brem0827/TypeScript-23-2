@@ -36,6 +36,22 @@
 7. 🔖[중간고사](#중간고사)➡️
 8. 💭[7주차](#7주차)➡️
 9. 💭[8주차](#8주차)➡️
+9. 💭[9주차](#9주차)➡️
+
+---
+# 9주차
+
+🔋 2023.11.08
+
+[📖9주차 수업 자료](https://gainful-appendix-a7a.notion.site/React-Typescript-state-reducer-55154d5985544da39d48663e0034b75f)
+
+<details><summary>💭 설치 </summary>
+
+- `npx create-react-app my-app --template typescript`
+
+- `npm install @types/react @types/react-dom`
+
+</details>
 
 ---
 # 8주차
@@ -46,7 +62,7 @@
 
 [📖참고 자료](https://react.dev/learn/typescript)
 
-# 일반적인 Generic Type 사용
+<details><summary>💭 일반적인 Generic Type 사용 </summary>
 
 ```tsx
 
@@ -60,7 +76,9 @@ const data = myIdentity("dealim");
 
 ```
 
-- 예제
+</details>
+
+<details><summary>💭 예제 </summary>
 
 ```tsx
 
@@ -92,7 +110,9 @@ function addProduct(product) {
 
 ```
 
-- 리팩토링
+</details>
+
+<details><summary>💭 리팩토링 </summary>
 
 ```tsx
 
@@ -133,8 +153,9 @@ function addProduct(product: Product): void {
 
 ```
 
-- generic 사용
+</details>
 
+<details><summary>💭 generic 사용 </summary>
 
 ```tsx
 
@@ -178,6 +199,8 @@ addEntity({ id: 3, name: 'Charlie' }, users);
 addEntity({ id: 'c', title: 'Shoes' }, products);
 
 ```
+
+</details>
 
 ---
 # 7주차
