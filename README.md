@@ -209,11 +209,13 @@ addEntity({ id: 'c', title: 'Shoes' }, products);
 
 [📖7주차 수업 자료](https://gainful-appendix-a7a.notion.site/null-undefined-generic-7ba912c878ed4576931bb1aec6944caa)
 
-# null and undefined
+<details><summary>💭 null and undefined </summary>
 
 - `타입스크립트에서`도 위의 두 값을 의미하는 타입이 존재하며 이 타입들이 동작하는 방식은 `strictNullChecks` 옵션의 사용 여부에 따라 달라집니다.
 
-## strictNullChecks off
+</details>
+
+<details><summary>💭 strictNullChecks off </summary>
 
 - `strictNullChecks`를 끄면 `null`이거나 `undefined`값에 정상적으로 액세스할 수 있으며, `null` 및 `undefined`은 모든 유형의 프로퍼티에 할당할 수 있습니다.
 
@@ -226,7 +228,9 @@ function greet(name?: string) {
 
 ```
 
-## strictNullChecks on
+</details>
+
+<details><summary>💭 strictNullChecks on </summary>
 
 - `strictNullChecks`를 켜면 값이 `null`이거나 `undefined`인 경우 해당 값에 메서드나 속성에 접근하기 전에 값을 테스트해야 합니다.
 
@@ -239,7 +243,9 @@ function greet(name?: string) {
 
 ```
 
-## Non-null Assertion Operator (Postfix !)
+</details>
+
+<details><summary>💭 on-null Assertion Operator (Postfix !) </summary>
 
 - `타입스크립트`에는 직접적인 체크 없이 타입에서 `null` 과 `undefined`을 제거하는 특별한 구문도 있습니다. 
 
@@ -254,7 +260,9 @@ function liveDangerously(x?: number | null) {
 
 ```
 
-# Generic Type 
+</details>
+
+<details><summary>💭 Generic Type  </summary>
 
 - `C# 및 Java`와 같은 언어에서 `재사용 가능`한 컴포넌트를 만들기 위한 기능 중 하나는 `generics`입니다.
 
@@ -289,6 +297,8 @@ let nid3 = identity(true); //let id: boolean
 
 1. 인수 호출 전 <> 안에 캡쳐할 타입을 명시적으로 선언하기
 2. 평소대로 호출하고 인수값을 바탕으로 typescript가 타입을 추론하도록 하기
+
+</details>
 
 ---
 # 중간고사
