@@ -38,6 +38,18 @@
 9. 💭[10주차](#10주차)➡️
 9. 💭[11주차](#11주차)➡️
 10. 💭[12주차](#12주차)➡️
+11. 💭[13주차](#13주차)➡️
+
+---
+# 13주차
+
+🔋 2023.11.22
+
+[📖13주차 수업 자료](https://gainful-appendix-a7a.notion.site/React-Typescript-context-735d430c7b0243f6b39f575c1f987455)
+
+[📖13주차 수업 참고 사이트](https://roadmap.sh/frontend)
+
+[📖13주차 과제](https://codesandbox.io/p/sandbox/react-rogeuinyujeo-forked-3676z5?file=%2Fsrc%2Fcomponents%2FUserSelector.js%3A6%2C23)
 
 ---
 # 12주차
@@ -45,38 +57,6 @@
 🔋 2023.11.15
 
 [📖12주차 수업 자료](https://gainful-appendix-a7a.notion.site/React-Typescript-state-reducer-55154d5985544da39d48663e0034b75f?pvs=4)
-
-[📖12주차 수업 실습](https://codesandbox.io/s/userprofile-ex1-forked-qnktc2?file=/components/UserProfileReducer.js)
-
-[📖12주차 수업 실습2](https://codesandbox.io/s/ridyuseo-silseub1-forked-2ddry8?file=/App.tsx)
-
-<details><summary>💭 Typescript with Hooks </summary>
-
-  <details><summary>💭 useState </summary>
-
-    ```tsx
-    
-    type RequestState = { status: 'idle' }
-      | { status: 'loading' }
-      | { status: 'success', data: any }
-      | { status: 'error', error: Error };
-
-    const [requestState, setRequestState] = useState<RequestState>({    status: 'idle' });
-      
-    ```
-
-  </details>
-
-  <details><summary>💭 useReducer </summary>
-
-  - 복잡성을 줄이고 모든 로직을 연결하기 쉬운 곳에 유지하려면 해당 state와 관련된 로직을 reducer라고 하는 컴포넌트의 단일 함수로 옮길 수 있습니다.
-
-  - useState에서 useReducer로 마이그레이션 하는 절차는 아래와 같습니다.
-
-  </details>
-
-
-</details>
 
 ---
 # 11주차
